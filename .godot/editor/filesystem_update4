@@ -5,3 +5,5 @@ res://scenes/LoginScreen.tscn
 res://scripts/LoginScreen.gd
 res://scripts/CreateAccount.gd
 res://scripts/ForgotPassword.gd
+res://scenes/ForgotPassword.tscn
+res://scenes/CreateAccount.tscn
