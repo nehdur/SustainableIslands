@@ -1,0 +1,14 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1789997735
+README.md::TextFile::-1::1789547653::0::1::::<><><>0<>0<><>::
+::res://autoloads/::1789997484
+GameData.gd::GDScript::1780331186775654183::1789547614::0::1::::<>Node<><>0<>0<><>::
+GameState.gd::GDScript::3599924759235541460::1789547621::0::1::::<>Node<><>0<>0<><>::
+Supabase.gd::GDScript::3164502890933771444::1789997484::0::1::::<>Node<><>0<>0<><>::
+::res://migrations/::1789995876
+::res://scenes/::1789997652
+Main.tscn::PackedScene::3531911481251914081::1789997652::0::1::::<><><>0<>0<><>::uid://b1o68t6fvmg5e::::res://scripts/Main.gd
+::res://scripts/::1789997652
+Main.gd::GDScript::4242174110901711272::1789562895::0::1::::<>Control<><>0<>0<><>::
+Login.gd::GDScript::1392758057449840439::1789997652::0::1::::<>Control<><>0<>0<><>::
+::res://supabase/::0
