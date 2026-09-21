@@ -1,0 +1,17 @@
+config_version=5
+
+[application]
+
+config/name="SustainableIsland"
+run/main_scene="res://scenes/Main.tscn"
+config/features=PackedStringArray("4.6", "Forward Plus")
+
+[autoload]
+
+GameData="*res://autoloads/GameData.gd"
+GameState="*res://autoloads/GameState.gd"
+
+[display]
+
+window/size/viewport_width=1152
+window/size/viewport_height=720
