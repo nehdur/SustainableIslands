@@ -8,7 +8,31 @@ extends Control
 @onready var remember_check: CheckBox = $CenterContainer/LoginPanel/VBox/RememberRow/RememberCheck
 
 
+var feedback: Label
+var guest_button: Button
+
 func _ready() -> void:
+	feedback = Label.new()
+	feedback.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	feedback.custom_minimum_size = Vector2(620, 54)
+	feedback.add_theme_font_size_override("font_size", 20)
+	$CenterContainer/LoginPanel/VBox.add_child(feedback)
+	guest_button = Button.new()
+	guest_button.text = "Play offline as guest"
+	guest_button.custom_minimum_size.y = 48
+	guest_button.add_theme_font_size_override("font_size", 24)
+	$CenterContainer/LoginPanel/VBox.add_child(guest_button)
+	guest_button.pressed.connect(func():
+		Supabase.sign_out()
+		IslandGame.select_profile("guest")
+		get_tree().change_scene_to_file("res://scenes/MainMenu.tscn")
+	)
+	# Remember-email only: passwords and access tokens are never stored on disk.
+	remember_check.text = "Remember email"
+	var cfg := ConfigFile.new()
+	if cfg.load("user://login_preferences.cfg") == OK:
+		username_field.text = str(cfg.get_value("login", "name", ""))
+		remember_check.button_pressed = not username_field.text.is_empty()
 	login_button.pressed.connect(_on_login_pressed)
 	create_account_button.pressed.connect(_on_create_account_pressed)
 	forgot_password_button.pressed.connect(_on_forgot_password_pressed)
@@ -20,14 +44,18 @@ func _on_login_pressed() -> void:
 	var password := password_field.text
 
 	if username_or_email.is_empty():
-		print("Please enter your username or email.")
+		feedback.text = "Please enter your username or email."
 		return
 
 	if password.is_empty():
-		print("Please enter your password.")
+		feedback.text = "Please enter your password."
 		return
 
 	login_button.disabled = true
+	guest_button.disabled = true
+	create_account_button.disabled = true
+	forgot_password_button.disabled = true
+	feedback.text = "Connecting…"
 	login_button.text = "Logging in..."
 
 	var result := await Supabase.sign_in_user_or_email(
@@ -36,26 +64,20 @@ func _on_login_pressed() -> void:
 	)
 
 	if not result["ok"]:
-		print("Login failed: ", result["error"])
+		feedback.text = "Login failed: " + str(result["error"])
+		guest_button.disabled = false
+		create_account_button.disabled = false
+		forgot_password_button.disabled = false
 
 		login_button.disabled = false
 		login_button.text = "➜ Log In"
 
 		return
 
-	print("Login successful!")
-
-	var load_result := await Supabase.load_game_state()
-
-	if not load_result["ok"]:
-		print("Could not load your save: ", load_result["error"])
-
-		login_button.disabled = false
-		login_button.text = "➜ Log In"
-
-		return
-
-	_apply_saved_state(load_result)
+	IslandGame.select_profile(Supabase.user_id)
+	var cfg := ConfigFile.new()
+	cfg.set_value("login", "name", username_or_email if remember_check.button_pressed else "")
+	cfg.save("user://login_preferences.cfg")
 
 	get_tree().change_scene_to_file(
 		"res://scenes/MainMenu.tscn"

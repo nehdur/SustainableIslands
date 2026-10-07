@@ -69,10 +69,7 @@ func _on_create_pressed() -> void:
 	# If email confirmation is disabled, Supabase gives us a session immediately.
 	if Supabase.is_logged_in():
 
-		var load_result := await Supabase.load_game_state()
-
-		if load_result["ok"]:
-			_apply_saved_state(load_result)
+		IslandGame.select_profile(Supabase.user_id)
 
 		get_tree().change_scene_to_file(
 			"res://scenes/MainMenu.tscn"

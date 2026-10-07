@@ -35,6 +35,7 @@ func _request(
 ) -> Dictionary:
 
 	var request := HTTPRequest.new()
+	request.timeout = 12.0
 	add_child(request)
 
 	var headers := _headers(authenticated)
@@ -346,3 +347,13 @@ func sign_out() -> void:
 	access_token = ""
 	refresh_token = ""
 	user_id = ""
+
+
+# Separate table preserves the original prototype progress schema.
+func island_request(method: HTTPClient.Method, path: String, payload = null, headers: PackedStringArray = PackedStringArray()) -> Dictionary:
+	var result := await _request(method, path, payload, true, headers)
+	if int(result.status) == 401 and not refresh_token.is_empty():
+		var refresh := await refresh_session()
+		if refresh.ok:
+			result = await _request(method, path, payload, true, headers)
+	return result

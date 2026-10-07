@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://b8riecdbseen4"]
+[gd_scene format=3]
 
-[ext_resource type="Script" uid="uid://bi3i8p2q781gu" path="res://scripts/CreateAccount.gd" id="1_script"]
+[ext_resource type="Script" path="res://scripts/CreateAccount.gd" id="1_script"]
+[ext_resource type="Texture2D" path="res://assets/bg1.webp" id="2_3tfp6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 40.0
@@ -43,7 +44,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="CreateAccount" type="Control" unique_id=1890682919]
+[node name="CreateAccount" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,26 +53,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_script")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1005732687]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.145098, 0.239216, 0.196078, 1)
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 540)
+texture = ExtResource("2_3tfp6")
 
-[node name="TitleLabel" type="Label" parent="." unique_id=1008844585]
-layout_mode = 0
-offset_left = 60.0
-offset_top = 50.0
-offset_right = 620.0
-offset_bottom = 130.0
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 44
-text = "🌴 Sustainable Islands"
-
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2026647544]
+[node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -79,68 +65,68 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="AuthPanel" type="PanelContainer" parent="CenterContainer" unique_id=58008299]
-custom_minimum_size = Vector2(420, 0)
+[node name="AuthPanel" type="PanelContainer" parent="CenterContainer"]
+custom_minimum_size = Vector2(700, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/AuthPanel" unique_id=480176591]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/AuthPanel"]
 layout_mode = 2
 theme_override_constants/separation = 14
 
-[node name="WelcomeLabel" type="Label" parent="CenterContainer/AuthPanel/VBox" unique_id=717517581]
+[node name="WelcomeLabel" type="Label" parent="CenterContainer/AuthPanel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "Create Account"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="CenterContainer/AuthPanel/VBox" unique_id=2138721959]
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/AuthPanel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.85, 0.95, 1)
 text = "Start your island journey!"
 horizontal_alignment = 1
 
-[node name="UsernameField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=1155873530]
+[node name="UsernameField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox"]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_field")
 placeholder_text = "Username"
 
-[node name="EmailField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=1151968872]
+[node name="EmailField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox"]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_field")
 placeholder_text = "Email"
 
-[node name="PasswordField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=1181291260]
+[node name="PasswordField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox"]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_field")
 placeholder_text = "Password"
 secret = true
 
-[node name="ConfirmPasswordField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=2082328641]
+[node name="ConfirmPasswordField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox"]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_field")
 placeholder_text = "Confirm Password"
 secret = true
 
-[node name="CreateButton" type="Button" parent="CenterContainer/AuthPanel/VBox" unique_id=628223977]
+[node name="CreateButton" type="Button" parent="CenterContainer/AuthPanel/VBox"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.15, 0.4, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_primary")
 text = "➕ Create Account"
 
-[node name="StatusLabel" type="Label" parent="CenterContainer/AuthPanel/VBox" unique_id=845615150]
+[node name="StatusLabel" type="Label" parent="CenterContainer/AuthPanel/VBox"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 0.85, 0.85, 1)
 horizontal_alignment = 1
 autowrap_mode = 2
 
-[node name="BackButton" type="Button" parent="CenterContainer/AuthPanel/VBox" unique_id=642093371]
+[node name="BackButton" type="Button" parent="CenterContainer/AuthPanel/VBox"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
