@@ -1,8 +1,8 @@
-[gd_scene format=3]
+[gd_scene format=3 uid="uid://ctn8tmt1221no"]
 
-[ext_resource type="Script" path="res://scripts/LoginScreen.gd" id="1_script"]
-[ext_resource type="Texture2D" path="res://assets/bg1.webp" id="2_mkq73"]
-[ext_resource type="Texture2D" path="res://assets/Title.png" id="3_rtsal"]
+[ext_resource type="Script" uid="uid://dimws58qaagb2" path="res://scripts/LoginScreen.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dyeevus2xvnea" path="res://assets/bg1.webp" id="2_mkq73"]
+[ext_resource type="Texture2D" uid="uid://u051h15lk2ji" path="res://assets/Title.png" id="3_rtsal"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 40.0
@@ -45,7 +45,7 @@ corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
 
-[node name="LoginScreen" type="Control"]
+[node name="LoginScreen" type="Control" unique_id=1798827174]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,11 +56,11 @@ script = ExtResource("1_script")
 metadata/_edit_vertical_guides_ = [960.0]
 metadata/_edit_horizontal_guides_ = [540.0]
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="Background" type="Sprite2D" parent="." unique_id=1668501156]
 position = Vector2(960, 540)
 texture = ExtResource("2_mkq73")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=2007710967]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,79 +72,79 @@ offset_bottom = -145.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="LoginPanel" type="PanelContainer" parent="CenterContainer"]
+[node name="LoginPanel" type="PanelContainer" parent="CenterContainer" unique_id=739126073]
 custom_minimum_size = Vector2(700, 30)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/LoginPanel"]
+[node name="VBox" type="VBoxContainer" parent="CenterContainer/LoginPanel" unique_id=1555706179]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="WelcomeLabel" type="Label" parent="CenterContainer/LoginPanel/VBox"]
+[node name="WelcomeLabel" type="Label" parent="CenterContainer/LoginPanel/VBox" unique_id=884537234]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 30
 text = "Welcome!"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="CenterContainer/LoginPanel/VBox"]
+[node name="SubtitleLabel" type="Label" parent="CenterContainer/LoginPanel/VBox" unique_id=1763565854]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.85, 0.95, 1)
 text = "Login to continue your journey!"
 horizontal_alignment = 1
 
-[node name="UsernameField" type="LineEdit" parent="CenterContainer/LoginPanel/VBox"]
+[node name="UsernameField" type="LineEdit" parent="CenterContainer/LoginPanel/VBox" unique_id=553959148]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_field")
 placeholder_text = "👤 Username or Email"
 
-[node name="PasswordField" type="LineEdit" parent="CenterContainer/LoginPanel/VBox"]
+[node name="PasswordField" type="LineEdit" parent="CenterContainer/LoginPanel/VBox" unique_id=794546592]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_field")
 placeholder_text = "🔒 Password"
 secret = true
 
-[node name="RememberRow" type="HBoxContainer" parent="CenterContainer/LoginPanel/VBox"]
+[node name="RememberRow" type="HBoxContainer" parent="CenterContainer/LoginPanel/VBox" unique_id=849449901]
 layout_mode = 2
 
-[node name="RememberCheck" type="CheckBox" parent="CenterContainer/LoginPanel/VBox/RememberRow"]
+[node name="RememberCheck" type="CheckBox" parent="CenterContainer/LoginPanel/VBox/RememberRow" unique_id=1726728478]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.9, 0.9, 0.95, 1)
 text = "Remember me"
 
-[node name="Spacer" type="Control" parent="CenterContainer/LoginPanel/VBox/RememberRow"]
+[node name="Spacer" type="Control" parent="CenterContainer/LoginPanel/VBox/RememberRow" unique_id=896740083]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ForgotPasswordButton" type="LinkButton" parent="CenterContainer/LoginPanel/VBox/RememberRow"]
+[node name="ForgotPasswordButton" type="LinkButton" parent="CenterContainer/LoginPanel/VBox/RememberRow" unique_id=594720187]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.85, 0.85, 0.95, 1)
 text = "Forgot Password?"
 
-[node name="LoginButton" type="Button" parent="CenterContainer/LoginPanel/VBox"]
+[node name="LoginButton" type="Button" parent="CenterContainer/LoginPanel/VBox" unique_id=1897977216]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 0.15, 0.4, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_primary")
 text = "➜ Log In"
 
-[node name="OrLabel" type="Label" parent="CenterContainer/LoginPanel/VBox"]
+[node name="OrLabel" type="Label" parent="CenterContainer/LoginPanel/VBox" unique_id=2032363141]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.75, 0.85, 1)
 text = "━━━━━━━━━━━━━━━━━━━ or ━━━━━━━━━━━━━━━━━━━"
 horizontal_alignment = 1
 
-[node name="CreateAccountButton" type="Button" parent="CenterContainer/LoginPanel/VBox"]
+[node name="CreateAccountButton" type="Button" parent="CenterContainer/LoginPanel/VBox" unique_id=1906795454]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_secondary")
 text = "➕ Create New Account"
 
-[node name="Title" type="Sprite2D" parent="."]
+[node name="Title" type="Sprite2D" parent="." unique_id=1244014462]
 position = Vector2(960.00006, 217.00002)
 scale = Vector2(0.3773148, 0.37731478)
 texture = ExtResource("3_rtsal")
