@@ -14,6 +14,7 @@ func _ready() -> void:
 	create_button.pressed.connect(_on_create_pressed)
 	back_button.pressed.connect(_on_back_pressed)
 	status_label.text = ""
+	preload("res://scripts/MenuColors.gd").apply(self)
 
 
 func _on_create_pressed() -> void:

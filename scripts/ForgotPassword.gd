@@ -13,7 +13,7 @@ func _ready() -> void:
 	back_button.pressed.connect(_on_back_pressed)
 
 	status_label.text = ""
-
+	preload("res://scripts/MenuColors.gd").apply(self)
 
 func _on_send_pressed() -> void:
 

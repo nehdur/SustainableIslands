@@ -1,2 +1,9 @@
 res://scenes/LoginScreen.tscn
 res://scripts/IslandScreen.gd
+res://scripts/MenuColors.gd
+res://scripts/LoginScreen.gd
+res://scripts/CreateAccount.gd
+res://scripts/ForgotPassword.gd
+res://scripts/MainMenu.gd
+res://scenes/CreateAccount.tscn
+res://scenes/ForgotPassword.tscn

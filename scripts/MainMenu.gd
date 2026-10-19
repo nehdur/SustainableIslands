@@ -45,6 +45,7 @@ func _ready() -> void:
  back_button.disabled = false
  quit_button.disabled = false
  continue_button.text = "View season results" if IslandGame.data.finished else "Continue island • Day %d" % IslandGame.data.day
+ preload("res://scripts/MenuColors.gd").apply(self)
 
 func play() -> void:
  get_tree().change_scene_to_file("res://scenes/Game.tscn")

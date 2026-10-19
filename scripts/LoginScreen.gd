@@ -37,7 +37,7 @@ func _ready() -> void:
 	create_account_button.pressed.connect(_on_create_account_pressed)
 	forgot_password_button.pressed.connect(_on_forgot_password_pressed)
 	password_field.text_submitted.connect(func(_t): _on_login_pressed())
-
+	preload("res://scripts/MenuColors.gd").apply(self)
 
 func _on_login_pressed() -> void:
 	var username_or_email := username_field.text.strip_edges()
