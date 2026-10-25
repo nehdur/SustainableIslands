@@ -1,57 +1,74 @@
 extends Control
+## Every location and its level textures/sizes are editable in IslandMap.tscn.
 signal selected(key: String)
-const POINTS := {"guesthouse":Vector2(500,304),"hotel":Vector2(769,268),"market":Vector2(341,470),"culture":Vector2(646,540),"forest":Vector2(340,220),"reef":Vector2(986,603),"waste":Vector2(862,436),"utilities":Vector2(627,207)}
-var markers: Dictionary = {}
-var selected_key := "guesthouse"
-var clock := 0.0
-var boat: TextureRect
+
+var selected_key: String = "guesthouse"
+var clock: float = 0.0
+var editor_icons: Dictionary = {}
+@onready var locations: Control = $Locations
+@onready var boat: TextureRect = $Boat
 
 func _ready() -> void:
- clip_contents = true
- IslandUI.texture(self,"res://assets/island/island_map.svg",Rect2(0,0,1200,800))
- for key in POINTS:
-  var pos: Vector2 = POINTS[key]
-  var box := Control.new()
-  box.position = pos - Vector2(65,95)
-  add_child(box)
-  var sprite := IslandUI.texture(box,"res://assets/island/%s.svg" % key,Rect2(0,0,130,130))
-  var title: String = IslandGame.FACILITIES[key].title if IslandGame.FACILITIES.has(key) else ("Mangrove Forest" if key == "forest" else "Coral Sanctuary")
-  var btn := IslandUI.button(box,title,Rect2(-35,115,205,44),func():
-   selected_key = key
-   selected.emit(key)
-   refresh()
-  )
-  btn.add_theme_font_size_override("font_size",18)
-  btn.tooltip_text = "Explore " + title
-  var status := IslandUI.label(box,"",Rect2(-30,163,205,26),17,Color("23464a"))
-  status.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-  markers[key] = {"sprite":sprite,"button":btn,"status":status}
- boat = IslandUI.texture(self,"res://assets/island/boat.svg",Rect2(20,600,106,106))
- IslandGame.changed.connect(refresh)
- refresh()
+    # Remember the artwork position and size set in the editor.
+    for button in locations.get_children():
+        var icon: TextureRect = button.get_node("Icon")
+        editor_icons[str(button.get_meta("location_key"))] = {
+            "size": icon.size, "position": icon.position
+        }
+    IslandGame.changed.connect(refresh)
+    refresh()
+
+func select_location(key: String) -> void:
+    set_selection(key)
+    selected.emit(key)
+
+func set_selection(key: String) -> void:
+    selected_key = key
+    refresh()
+
+func get_location_texture(key: String) -> Texture2D:
+    for button in locations.get_children():
+        if str(button.get_meta("location_key")) != key:
+            continue
+        var textures: Array = button.get_meta("level_textures", [])
+        if textures.is_empty():
+            return button.get_node("Icon").texture
+        var level: int = int(IslandGame.data.buildings.get(key, 1))
+        return textures[clampi(level - 1, 0, textures.size() - 1)]
+    return null
 
 func refresh() -> void:
- for key in markers:
-  var m: Dictionary = markers[key]
-  m.button.modulate = Color("fff0c6") if key == selected_key else Color.WHITE
-  if IslandGame.FACILITIES.has(key):
-   var level := int(IslandGame.data.buildings[key])
-   m.sprite.modulate = Color(1,1,1,0.45) if level == 0 else Color.WHITE
-   m.status.text = "Build site" if level == 0 else "Lv.%d  •  %s" % [level,"Open" if IslandGame.active(key) else "Needs workers"]
-  else:
-   m.status.text = "Health %d / 100" % int(IslandGame.data.forest if key == "forest" else IslandGame.data.marine)
+    for child in locations.get_children():
+        var button: Button = child as Button
+        var key: String = str(button.get_meta("location_key"))
+        var icon: TextureRect = button.get_node("Icon") as TextureRect
+        button.set_pressed_no_signal(key == selected_key)
+        if IslandGame.FACILITIES.has(key):
+            var level: int = int(IslandGame.data.buildings[key])
+            var level_sizes: Array = button.get_meta("level_sizes")
+            var artwork_size: Vector2 = level_sizes[clampi(level - 1, 0, level_sizes.size() - 1)]
+            icon.texture = get_location_texture(key)
+            var base: Dictionary = editor_icons[key]
+            var first_level_size: Vector2 = level_sizes[0]
+            # Grow relative to the editor size, keeping the building's feet fixed.
+            icon.size = base.size * artwork_size / first_level_size
+            var growth: Vector2 = (icon.size - base.size) * icon.scale
+            icon.position = base.position - Vector2(growth.x / 2.0, growth.y)
+            icon.visible = level > 0
+            button.get_node("PlotMarker").visible = level == 0
+            var badge: Panel = button.get_node("LevelPlate")
+            var badge_label: Label = button.get_node("LevelLabel")
+            badge.visible = level > 0
+            badge_label.visible = level > 0
+            badge.position = Vector2(button.size.x - 44.0, maxf(0.0, icon.position.y + 4.0))
+            badge_label.position = badge.position
+            badge_label.text = "L%d" % level
+            var state := "Build site" if level == 0 else ("Open" if IslandGame.active(key) else "Needs workers")
+            button.tooltip_text = "%s • Level %d • %s" % [IslandGame.FACILITIES[key].title, level, state]
+        else:
+            var forest: bool = key == "forest"
+            button.tooltip_text = "%s • Health %d / 100" % ["Mangrove Forest" if forest else "Coral Sanctuary", IslandGame.data.forest if forest else IslandGame.data.marine]
 
 func _process(delta: float) -> void:
- clock += delta
- boat.position = Vector2(70 + sin(clock * 0.15) * 38, 617 + sin(clock * 1.4) * 4)
- queue_redraw()
-
-func _draw() -> void:
- # Tiny visitors walk the village paths; their count follows tourism activity.
- var count := mini(10, int(IslandGame.data.visitors))
- for i in range(count):
-  var t := fmod(clock * 0.035 + i * 0.095, 1.0)
-  var p := Vector2(358,460).lerp(Vector2(828,431),t)
-  p.y += sin(t * PI) * -55 + (i % 3) * 9
-  draw_circle(p + Vector2(0,6),5,Color("577d68"))
-  draw_circle(p,4,Color("f5dfb3"))
+    clock += delta
+    boat.position = Vector2(size.x * 0.06 + sin(clock * 0.15) * 20, size.y * 0.78 + sin(clock * 1.4) * 4)

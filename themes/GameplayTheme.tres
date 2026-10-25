@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=11 format=3]
+[ext_resource type="FontFile" path="res://assets/game_ui/fonts/Nunito-Regular.ttf" id="body"]
+[ext_resource type="FontFile" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Button.tres" id="Button"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/ButtonHover.tres" id="ButtonHover"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/ButtonPressed.tres" id="ButtonPressed"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/ButtonDisabled.tres" id="ButtonDisabled"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Focus.tres" id="Focus"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Panel.tres" id="Panel"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/BarBackground.tres" id="BarBackground"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/BarForest.tres" id="BarForest"]
+
+[resource]
+default_font = ExtResource("body")
+default_font_size = 22
+Label/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+RichTextLabel/colors/default_color = Color(0.137, 0.247, 0.263, 1)
+Button/fonts/font = ExtResource("heading")
+Button/font_sizes/font_size = 24
+Button/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_hover_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_pressed_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_hover_pressed_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_focus_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_disabled_color = Color(0.41, 0.47, 0.40, 0.85)
+Button/styles/normal = ExtResource("Button")
+Button/styles/hover = ExtResource("ButtonHover")
+Button/styles/pressed = ExtResource("ButtonPressed")
+Button/styles/hover_pressed = ExtResource("ButtonPressed")
+Button/styles/disabled = ExtResource("ButtonDisabled")
+Button/styles/focus = ExtResource("Focus")
+Panel/styles/panel = ExtResource("Panel")
+ProgressBar/styles/background = ExtResource("BarBackground")
+ProgressBar/styles/fill = ExtResource("BarForest")

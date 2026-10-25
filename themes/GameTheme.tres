@@ -1,0 +1,34 @@
+[gd_resource type="Theme" load_steps=9 format=3]
+
+[ext_resource type="StyleBox" path="res://themes/Panel.tres" id="Panel"]
+[ext_resource type="StyleBox" path="res://themes/Button.tres" id="Button"]
+[ext_resource type="StyleBox" path="res://themes/ButtonHover.tres" id="ButtonHover"]
+[ext_resource type="StyleBox" path="res://themes/ButtonPressed.tres" id="ButtonPressed"]
+[ext_resource type="StyleBox" path="res://themes/Disabled.tres" id="Disabled"]
+[ext_resource type="StyleBox" path="res://themes/Focus.tres" id="Focus"]
+[ext_resource type="StyleBox" path="res://themes/BarBackground.tres" id="BarBackground"]
+[ext_resource type="StyleBox" path="res://themes/BarFill.tres" id="BarFill"]
+
+[resource]
+default_font_size = 24
+Label/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+RichTextLabel/colors/default_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_disabled_color = Color(0.529, 0.580, 0.541, 1)
+Button/styles/normal = ExtResource("Button")
+Button/styles/hover = ExtResource("ButtonHover")
+Button/styles/pressed = ExtResource("ButtonPressed")
+Button/styles/disabled = ExtResource("Disabled")
+Button/styles/focus = ExtResource("Focus")
+Panel/styles/panel = ExtResource("Panel")
+PanelContainer/styles/panel = ExtResource("Panel")
+TabContainer/styles/panel = ExtResource("Panel")
+TabContainer/styles/tab_selected = ExtResource("Panel")
+TabContainer/styles/tab_unselected = ExtResource("Button")
+ProgressBar/styles/background = ExtResource("BarBackground")
+ProgressBar/styles/fill = ExtResource("BarFill")
+Button/colors/font_hover_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_pressed_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_focus_color = Color(0.137, 0.247, 0.263, 1)
+TabContainer/colors/font_selected_color = Color(0.137, 0.247, 0.263, 1)
+TabContainer/colors/font_unselected_color = Color(0.38, 0.48, 0.47, 1)

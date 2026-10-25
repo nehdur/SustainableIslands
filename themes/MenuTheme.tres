@@ -1,0 +1,29 @@
+[gd_resource type="Theme" load_steps=6 format=3]
+
+[ext_resource type="FontFile" path="res://assets/fonts/Nunito-Regular.ttf" id="1"]
+[ext_resource type="FontFile" path="res://assets/fonts/BreeSerif-Regular.ttf" id="2"]
+[ext_resource type="StyleBox" path="res://themes/Button1.tres" id="3"]
+[ext_resource type="StyleBox" path="res://themes/Button1Dark.tres" id="4"]
+[ext_resource type="StyleBox" path="res://themes/Textbox.tres" id="5"]
+
+[resource]
+default_font = ExtResource("1")
+default_font_size = 22
+Label/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_hover_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_pressed_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_focus_color = Color(0.137, 0.247, 0.263, 1)
+Button/fonts/font = ExtResource("2")
+Button/font_sizes/font_size = 60
+Button/styles/normal = ExtResource("3")
+Button/styles/hover = ExtResource("4")
+Button/styles/pressed = ExtResource("4")
+Button/styles/hover_pressed = ExtResource("4")
+Button/styles/disabled = ExtResource("3")
+Button/styles/focus = ExtResource("3")
+LineEdit/fonts/font = ExtResource("1")
+LineEdit/font_sizes/font_size = 50
+LineEdit/styles/normal = ExtResource("5")
+LineEdit/styles/read_only = ExtResource("5")
+LineEdit/styles/focus = ExtResource("5")

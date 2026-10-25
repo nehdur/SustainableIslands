@@ -1,8 +1,882 @@
-[gd_scene load_steps=2 format=3]
-[ext_resource type="Script" path="res://scripts/IslandScreen.gd" id="1"]
-[node name="SustainableIsland" type="Control"]
+[gd_scene format=3 uid="uid://bf0wy6kkwg4vr"]
+
+[ext_resource type="Texture2D" uid="uid://bfov3iwqchqe" path="res://assets/game_ui/menu_background.png" id="background"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/BarEnergy.tres" id="BarEnergy"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/BarForest.tres" id="BarForest"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/BarMarine.tres" id="BarMarine"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/BarWaste.tres" id="BarWaste"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/BarWater.tres" id="BarWater"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/CompactPanel.tres" id="CompactPanel"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/counter.tres" id="counter"]
+[ext_resource type="PackedScene" path="res://scenes/GameDialog.tscn" id="dialog"]
+[ext_resource type="Texture2D" uid="uid://ffckb8314d5j" path="res://assets/game_ui/skins/panel.png" id="frame"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/guesthouse.tres" id="guesthouse"]
+[ext_resource type="FontFile" uid="uid://dytwhorsp2bp1" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
+[ext_resource type="PackedScene" uid="uid://2uf10gonlsi3" path="res://scenes/IslandMap.tscn" id="map"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Primary.tres" id="Primary"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryDisabled.tres" id="PrimaryDisabled"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryHover.tres" id="PrimaryHover"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryPressed.tres" id="PrimaryPressed"]
+[ext_resource type="Script" uid="uid://b2yoalvkmxwb8" path="res://scripts/IslandScreen.gd" id="script"]
+[ext_resource type="Theme" path="res://themes/game_ui/GameplayTheme.tres" id="theme"]
+
+[sub_resource type="ButtonGroup" id="Tabs"]
+
+[node name="SustainableIsland" type="Control" unique_id=1478026209]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("1")
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+script = ExtResource("script")
+
+[node name="Background" type="TextureRect" parent="." unique_id=1441128001]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("background")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="BackgroundTint" type="ColorRect" parent="." unique_id=295101209]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.05, 0.19, 0.17, 0.34)
+
+[node name="HeaderPanel" type="Panel" parent="." unique_id=2029362614]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 28.0
+offset_right = 1880.0
+offset_bottom = 148.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("CompactPanel")
+
+[node name="GameTitle" type="Label" parent="." unique_id=2098004445]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 52.0
+offset_right = 397.0
+offset_bottom = 93.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 30
+text = "SustainableIsland"
+
+[node name="Tagline" type="Label" parent="." unique_id=1036025912]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 97.0
+offset_right = 392.0
+offset_bottom = 121.0
+theme_override_font_sizes/font_size = 17
+text = "Tourism • Community • Nature"
+
+[node name="MoneyCard" type="TextureRect" parent="." unique_id=1221909122]
+layout_mode = 0
+offset_left = 410.0
+offset_top = 50.0
+offset_right = 646.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("counter")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="MoneySymbol" type="Label" parent="." unique_id=1109032455]
+layout_mode = 0
+offset_left = 429.0
+offset_top = 63.0
+offset_right = 481.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 21
+text = "🪙"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MoneyHeading" type="Label" parent="." unique_id=1029466408]
+layout_mode = 0
+offset_left = 493.0
+offset_top = 72.0
+offset_right = 557.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.99, 0.96, 0.83, 1)
+theme_override_font_sizes/font_size = 15
+text = "Coins"
+vertical_alignment = 1
+
+[node name="MoneyValue" type="Label" parent="." unique_id=1249876388]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 559.0
+offset_top = 71.0
+offset_right = 630.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(1, 0.99, 0.91, 1)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 22
+text = "1800"
+vertical_alignment = 1
+
+[node name="DayCard" type="TextureRect" parent="." unique_id=2131739233]
+layout_mode = 0
+offset_left = 656.0
+offset_top = 50.0
+offset_right = 892.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("counter")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="DaySymbol" type="Label" parent="." unique_id=1084843754]
+layout_mode = 0
+offset_left = 676.0
+offset_top = 64.0
+offset_right = 728.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 21
+text = "☀️"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DayHeading" type="Label" parent="." unique_id=303762]
+layout_mode = 0
+offset_left = 739.0
+offset_top = 72.0
+offset_right = 803.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.99, 0.96, 0.83, 1)
+theme_override_font_sizes/font_size = 15
+text = "Day"
+vertical_alignment = 1
+
+[node name="DayValue" type="Label" parent="." unique_id=121195686]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 805.0
+offset_top = 71.0
+offset_right = 876.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(1, 0.99, 0.91, 1)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 22
+text = "1/14"
+vertical_alignment = 1
+
+[node name="ActionsCard" type="TextureRect" parent="." unique_id=2046623398]
+layout_mode = 0
+offset_left = 902.0
+offset_top = 50.0
+offset_right = 1138.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("counter")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ActionsSymbol" type="Label" parent="." unique_id=195539539]
+layout_mode = 0
+offset_left = 920.0
+offset_top = 63.0
+offset_right = 972.0
+offset_bottom = 111.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 21
+text = "🔨"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ActionsHeading" type="Label" parent="." unique_id=2123056620]
+layout_mode = 0
+offset_left = 985.0
+offset_top = 72.0
+offset_right = 1049.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.99, 0.96, 0.83, 1)
+theme_override_font_sizes/font_size = 15
+text = "Actions"
+vertical_alignment = 1
+
+[node name="ActionsValue" type="Label" parent="." unique_id=1076347486]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1060.0
+offset_top = 71.0
+offset_right = 1131.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(1, 0.99, 0.91, 1)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 22
+text = "3"
+vertical_alignment = 1
+
+[node name="RatingCard" type="TextureRect" parent="." unique_id=876988949]
+layout_mode = 0
+offset_left = 1148.0
+offset_top = 50.0
+offset_right = 1384.0
+offset_bottom = 128.0
+mouse_filter = 2
+texture = ExtResource("counter")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="RatingSymbol" type="Label" parent="." unique_id=1251613655]
+layout_mode = 0
+offset_left = 1167.0
+offset_top = 64.0
+offset_right = 1219.0
+offset_bottom = 112.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 21
+text = "⭐"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RatingHeading" type="Label" parent="." unique_id=2130493700]
+layout_mode = 0
+offset_left = 1231.0
+offset_top = 72.0
+offset_right = 1295.0
+offset_bottom = 108.0
+theme_override_colors/font_color = Color(0.99, 0.96, 0.83, 1)
+theme_override_font_sizes/font_size = 15
+text = "Rating"
+vertical_alignment = 1
+
+[node name="RatingValue" type="Label" parent="." unique_id=1250962420]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1294.0
+offset_top = 71.0
+offset_right = 1365.0
+offset_bottom = 107.0
+theme_override_colors/font_color = Color(1, 0.99, 0.91, 1)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 22
+text = "71/100"
+vertical_alignment = 1
+
+[node name="GuideButton" type="Button" parent="." unique_id=229378178]
+layout_mode = 0
+offset_left = 1400.0
+offset_top = 61.0
+offset_right = 1522.0
+offset_bottom = 114.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+text = "Guide"
+
+[node name="SoundButton" type="Button" parent="." unique_id=1026765176]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1532.0
+offset_top = 61.0
+offset_right = 1699.0
+offset_bottom = 114.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+text = "Sound: on"
+
+[node name="MenuButton" type="Button" parent="." unique_id=910524212]
+layout_mode = 0
+offset_left = 1709.0
+offset_top = 61.0
+offset_right = 1842.0
+offset_bottom = 114.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+text = "Menu"
+
+[node name="MapPanel" type="Panel" parent="." unique_id=911263075]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 164.0
+offset_right = 1260.0
+offset_bottom = 932.0
+mouse_filter = 2
+
+[node name="IslandMap" parent="." unique_id=206947759 instance=ExtResource("map")]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 136.0
+offset_top = 258.0
+offset_right = 1164.0
+offset_bottom = 838.0
+
+[node name="MapFrame" type="NinePatchRect" parent="." unique_id=1497105160]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 164.0
+offset_right = 1260.0
+offset_bottom = 932.0
+texture = ExtResource("frame")
+draw_center = false
+patch_margin_left = 90
+patch_margin_top = 90
+patch_margin_right = 90
+patch_margin_bottom = 90
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="ExploreHeading" type="Label" parent="." unique_id=1064185455]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 204.0
+offset_right = 636.0
+offset_bottom = 244.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 28
+text = "Explore your island"
+
+[node name="QuickActionsButton" type="Button" parent="." unique_id=39469101]
+layout_mode = 0
+offset_left = 956.0
+offset_top = 201.0
+offset_right = 1164.0
+offset_bottom = 251.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 21
+text = "Quick actions"
+
+[node name="GoalsButton" type="Button" parent="." unique_id=1608054360]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 844.0
+offset_right = 318.0
+offset_bottom = 894.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 21
+text = "Season goals"
+
+[node name="MapHint" type="Label" parent="." unique_id=1472772140]
+layout_mode = 0
+offset_left = 338.0
+offset_top = 857.0
+offset_right = 1164.0
+offset_bottom = 884.0
+theme_override_font_sizes/font_size = 18
+text = "Select a location to manage its buildings and habitats."
+
+[node name="SidebarPanel" type="Panel" parent="." unique_id=325375300]
+layout_mode = 0
+offset_left = 1280.0
+offset_top = 164.0
+offset_right = 1880.0
+offset_bottom = 932.0
+mouse_filter = 2
+
+[node name="ManageTab" type="Button" parent="." unique_id=271923462]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1330.0
+offset_top = 206.0
+offset_right = 1488.0
+offset_bottom = 266.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = ExtResource("Primary")
+theme_override_styles/pressed = ExtResource("PrimaryPressed")
+theme_override_styles/hover = ExtResource("PrimaryHover")
+theme_override_styles/hover_pressed = ExtResource("PrimaryPressed")
+theme_override_styles/disabled = ExtResource("PrimaryDisabled")
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("Tabs")
+text = "Manage"
+
+[node name="HealthTab" type="Button" parent="." unique_id=1352931027]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1501.0
+offset_top = 206.0
+offset_right = 1659.0
+offset_bottom = 266.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = ExtResource("Primary")
+theme_override_styles/pressed = ExtResource("PrimaryPressed")
+theme_override_styles/hover = ExtResource("PrimaryHover")
+theme_override_styles/hover_pressed = ExtResource("PrimaryPressed")
+theme_override_styles/disabled = ExtResource("PrimaryDisabled")
+toggle_mode = true
+button_group = SubResource("Tabs")
+text = "Health"
+
+[node name="JournalTab" type="Button" parent="." unique_id=963616322]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1672.0
+offset_top = 206.0
+offset_right = 1830.0
+offset_bottom = 266.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = ExtResource("Primary")
+theme_override_styles/pressed = ExtResource("PrimaryPressed")
+theme_override_styles/hover = ExtResource("PrimaryHover")
+theme_override_styles/hover_pressed = ExtResource("PrimaryPressed")
+theme_override_styles/disabled = ExtResource("PrimaryDisabled")
+toggle_mode = true
+button_group = SubResource("Tabs")
+text = "Journal"
+
+[node name="ManagePage" type="Control" parent="." unique_id=284969177]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 1327.0
+offset_top = 278.0
+offset_right = 1831.0
+offset_bottom = 818.0
+mouse_filter = 1
+
+[node name="SelectedIcon" type="TextureRect" parent="ManagePage" unique_id=935659117]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 7.0
+offset_right = 134.0
+offset_bottom = 141.0
+mouse_filter = 2
+texture = ExtResource("guesthouse")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="SelectedTitle" type="Label" parent="ManagePage" unique_id=141280747]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 150.0
+offset_top = 15.0
+offset_right = 504.0
+offset_bottom = 91.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 28
+text = "Palm Guesthouse"
+autowrap_mode = 3
+
+[node name="SelectedSDG" type="Label" parent="ManagePage" unique_id=1290367498]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 150.0
+offset_top = 100.0
+offset_right = 504.0
+offset_bottom = 148.0
+theme_override_font_sizes/font_size = 18
+text = "SDG 8 • Decent work"
+autowrap_mode = 3
+
+[node name="SelectedDescription" type="Label" parent="ManagePage" unique_id=2033164731]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 165.0
+offset_right = 504.0
+offset_bottom = 298.0
+theme_override_font_sizes/font_size = 22
+text = "Small, locally staffed accommodation. Each level adds 8 visitor spaces; workers keep it open."
+autowrap_mode = 3
+
+[node name="SelectedStatus" type="Label" parent="ManagePage" unique_id=46073586]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 307.0
+offset_right = 504.0
+offset_bottom = 341.0
+theme_override_font_sizes/font_size = 22
+text = "Level 1 / 3 • Workers 2 / 2"
+
+[node name="FacilityActions" type="Control" parent="ManagePage" unique_id=1728708493]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_top = 355.0
+offset_right = 504.0
+offset_bottom = 500.0
+mouse_filter = 1
+
+[node name="BuildButton" type="Button" parent="ManagePage/FacilityActions" unique_id=1600131415]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 504.0
+offset_bottom = 65.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("Primary")
+theme_override_styles/pressed = ExtResource("PrimaryPressed")
+theme_override_styles/hover = ExtResource("PrimaryHover")
+theme_override_styles/hover_pressed = ExtResource("PrimaryPressed")
+theme_override_styles/disabled = ExtResource("PrimaryDisabled")
+text = "Upgrade • 650 coins"
+
+[node name="HireButton" type="Button" parent="ManagePage/FacilityActions" unique_id=507810710]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 84.0
+offset_right = 247.0
+offset_bottom = 144.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+text = "Assign team"
+
+[node name="ReleaseButton" type="Button" parent="ManagePage/FacilityActions" unique_id=972198011]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 257.0
+offset_top = 84.0
+offset_right = 504.0
+offset_bottom = 144.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+text = "Release team"
+
+[node name="NatureActions" type="Control" parent="ManagePage" unique_id=1702091282]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_top = 355.0
+offset_right = 504.0
+offset_bottom = 500.0
+mouse_filter = 1
+
+[node name="ConserveButton" type="Button" parent="ManagePage/NatureActions" unique_id=936242369]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 504.0
+offset_bottom = 65.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_font_sizes/font_size = 23
+theme_override_styles/normal = ExtResource("Primary")
+theme_override_styles/pressed = ExtResource("PrimaryPressed")
+theme_override_styles/hover = ExtResource("PrimaryHover")
+theme_override_styles/hover_pressed = ExtResource("PrimaryPressed")
+theme_override_styles/disabled = ExtResource("PrimaryDisabled")
+text = "Plant native trees • 130 coins"
+
+[node name="RestoreHint" type="Label" parent="ManagePage/NatureActions" unique_id=815733935]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 87.0
+offset_right = 498.0
+offset_bottom = 143.0
+theme_override_font_sizes/font_size = 20
+text = "Restores up to 12 health points."
+autowrap_mode = 3
+
+[node name="ActionHint" type="Label" parent="ManagePage" unique_id=662506285]
+layout_mode = 0
+offset_top = 512.0
+offset_right = 504.0
+offset_bottom = 540.0
+theme_override_font_sizes/font_size = 19
+text = "Each change uses 1 management action."
+
+[node name="HealthPage" type="Control" parent="." unique_id=518605956]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 1328.0
+offset_top = 290.0
+offset_right = 1832.0
+offset_bottom = 822.0
+mouse_filter = 1
+
+[node name="JobsHeading" type="Label" parent="HealthPage" unique_id=1472959491]
+layout_mode = 0
+offset_right = 230.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "Local jobs / 12"
+
+[node name="JobsValue" type="Label" parent="HealthPage" unique_id=368459863]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 33.0
+offset_right = 230.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 31
+text = "2"
+
+[node name="SatisfactionHeading" type="Label" parent="HealthPage" unique_id=766651912]
+layout_mode = 0
+offset_left = 270.0
+offset_right = 500.0
+offset_bottom = 28.0
+theme_override_font_sizes/font_size = 20
+text = "Satisfaction"
+
+[node name="SatisfactionValue" type="Label" parent="HealthPage" unique_id=1716052748]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 270.0
+offset_top = 33.0
+offset_right = 500.0
+offset_bottom = 77.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 31
+text = "70%"
+
+[node name="MarineLabel" type="Label" parent="HealthPage" unique_id=937599246]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 100.0
+offset_right = 504.0
+offset_bottom = 129.0
+theme_override_font_sizes/font_size = 21
+text = "Marine 82 / 100"
+
+[node name="MarineBar" type="ProgressBar" parent="HealthPage" unique_id=2127831021]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 136.0
+offset_right = 504.0
+offset_bottom = 150.0
+mouse_filter = 2
+theme_override_styles/fill = ExtResource("BarMarine")
+value = 82.0
+show_percentage = false
+
+[node name="ForestLabel" type="Label" parent="HealthPage" unique_id=1500844104]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 165.0
+offset_right = 504.0
+offset_bottom = 194.0
+theme_override_font_sizes/font_size = 21
+text = "Forest 82 / 100"
+
+[node name="ForestBar" type="ProgressBar" parent="HealthPage" unique_id=109659546]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 201.0
+offset_right = 504.0
+offset_bottom = 215.0
+mouse_filter = 2
+theme_override_styles/fill = ExtResource("BarForest")
+value = 82.0
+show_percentage = false
+
+[node name="WaterLabel" type="Label" parent="HealthPage" unique_id=781016753]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 230.0
+offset_right = 504.0
+offset_bottom = 259.0
+theme_override_font_sizes/font_size = 21
+text = "Water 82 / 100"
+
+[node name="WaterBar" type="ProgressBar" parent="HealthPage" unique_id=2114896773]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 266.0
+offset_right = 504.0
+offset_bottom = 280.0
+mouse_filter = 2
+theme_override_styles/fill = ExtResource("BarWater")
+value = 82.0
+show_percentage = false
+
+[node name="EnergyLabel" type="Label" parent="HealthPage" unique_id=1268925019]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 295.0
+offset_right = 504.0
+offset_bottom = 324.0
+theme_override_font_sizes/font_size = 21
+text = "Energy 82 / 100"
+
+[node name="EnergyBar" type="ProgressBar" parent="HealthPage" unique_id=2132988497]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 331.0
+offset_right = 504.0
+offset_bottom = 345.0
+mouse_filter = 2
+theme_override_styles/fill = ExtResource("BarEnergy")
+value = 82.0
+show_percentage = false
+
+[node name="WasteLabel" type="Label" parent="HealthPage" unique_id=1799677550]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 360.0
+offset_right = 504.0
+offset_bottom = 389.0
+theme_override_font_sizes/font_size = 21
+text = "Waste 82 / 100"
+
+[node name="WasteBar" type="ProgressBar" parent="HealthPage" unique_id=696263145]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 396.0
+offset_right = 504.0
+offset_bottom = 410.0
+mouse_filter = 2
+theme_override_styles/fill = ExtResource("BarWaste")
+max_value = 200.0
+value = 82.0
+show_percentage = false
+
+[node name="ImpactLabel" type="Label" parent="HealthPage" unique_id=472207719]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 442.0
+offset_right = 504.0
+offset_bottom = 474.0
+theme_override_font_sizes/font_size = 21
+text = "Environmental impact: 16 / 100"
+
+[node name="HealthHint" type="Label" parent="HealthPage" unique_id=499912187]
+layout_mode = 0
+offset_top = 486.0
+offset_right = 504.0
+offset_bottom = 531.0
+theme_override_font_sizes/font_size = 19
+text = "Lower waste and impact are better."
+autowrap_mode = 3
+
+[node name="JournalPage" type="Control" parent="." unique_id=2135841061]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 0
+offset_left = 1328.0
+offset_top = 290.0
+offset_right = 1832.0
+offset_bottom = 818.0
+mouse_filter = 1
+
+[node name="JournalHeading" type="Label" parent="JournalPage" unique_id=2118130807]
+layout_mode = 0
+offset_right = 504.0
+offset_bottom = 45.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 28
+text = "Island journal"
+
+[node name="JournalText" type="RichTextLabel" parent="JournalPage" unique_id=1823972391]
+unique_name_in_owner = true
+layout_mode = 0
+offset_top = 65.0
+offset_right = 504.0
+offset_bottom = 520.0
+theme_override_font_sizes/normal_font_size = 22
+text = "Your island story starts here."
+scroll_following = true
+
+[node name="CloudButton" type="Button" parent="." unique_id=683016428]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1328.0
+offset_top = 831.0
+offset_right = 1832.0
+offset_bottom = 887.0
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+text = "Save / cloud sync"
+
+[node name="FooterPanel" type="Panel" parent="." unique_id=316672982]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 948.0
+offset_right = 1880.0
+offset_bottom = 1058.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("CompactPanel")
+
+[node name="ForecastLabel" type="Label" parent="." unique_id=534487099]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 82.0
+offset_top = 975.0
+offset_right = 1482.0
+offset_bottom = 1005.0
+theme_override_font_sizes/font_size = 21
+text = "Calm weather • Plan your island’s next step."
+
+[node name="ToastLabel" type="Label" parent="." unique_id=1296362530]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 82.0
+offset_top = 1004.0
+offset_right = 1482.0
+offset_bottom = 1032.0
+theme_override_font_sizes/font_size = 18
+text = "Progress autosaves after your decisions."
+text_overrun_behavior = 3
+max_lines_visible = 1
+
+[node name="NextDayButton" type="Button" parent="." unique_id=1136665824]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 1555.0
+offset_top = 968.0
+offset_right = 1845.0
+offset_bottom = 1033.0
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = ExtResource("Primary")
+theme_override_styles/pressed = ExtResource("PrimaryPressed")
+theme_override_styles/hover = ExtResource("PrimaryHover")
+theme_override_styles/hover_pressed = ExtResource("PrimaryPressed")
+theme_override_styles/disabled = ExtResource("PrimaryDisabled")
+text = "Next Day →"
+
+[node name="Audio" type="AudioStreamPlayer" parent="." unique_id=433892243]
+unique_name_in_owner = true
+
+[node name="GameDialog" parent="." unique_id=154299959 instance=ExtResource("dialog")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="GuideButton" to="." method="show_help"]
+[connection signal="pressed" from="SoundButton" to="." method="toggle_sound"]
+[connection signal="pressed" from="MenuButton" to="." method="go_menu"]
+[connection signal="selected" from="IslandMap" to="." method="select_zone"]
+[connection signal="pressed" from="QuickActionsButton" to="." method="show_toolbox"]
+[connection signal="pressed" from="GoalsButton" to="." method="show_goals"]
+[connection signal="pressed" from="ManageTab" to="." method="show_page" binds= [0]]
+[connection signal="pressed" from="HealthTab" to="." method="show_page" binds= [1]]
+[connection signal="pressed" from="JournalTab" to="." method="show_page" binds= [2]]
+[connection signal="pressed" from="ManagePage/FacilityActions/BuildButton" to="." method="do_build"]
+[connection signal="pressed" from="ManagePage/FacilityActions/HireButton" to="." method="do_hire"]
+[connection signal="pressed" from="ManagePage/FacilityActions/ReleaseButton" to="." method="do_release"]
+[connection signal="pressed" from="ManagePage/NatureActions/ConserveButton" to="." method="_on_conserve_pressed"]
+[connection signal="pressed" from="CloudButton" to="." method="sync_cloud"]
+[connection signal="pressed" from="NextDayButton" to="." method="next_day"]
+[connection signal="action_requested" from="GameDialog" to="." method="do_action"]
+[connection signal="end_day_confirmed" from="GameDialog" to="." method="advance_day"]

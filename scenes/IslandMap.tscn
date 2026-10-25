@@ -1,0 +1,804 @@
+[gd_scene format=3 uid="uid://2uf10gonlsi3"]
+
+[ext_resource type="StyleBox" path="res://themes/game_ui/Badge.tres" id="Badge"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/boat.tres" id="boat"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/culture.tres" id="culture"]
+[ext_resource type="Texture2D" uid="uid://cbiyt5368gh4p" path="res://assets/game_ui/upgrades/culture_2.png" id="culture_2"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Empty.tres" id="Empty"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/forest.tres" id="forest"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/guesthouse.tres" id="guesthouse"]
+[ext_resource type="Texture2D" uid="uid://bbfqhpqyyggc0" path="res://assets/game_ui/upgrades/guesthouse_2.png" id="guesthouse_2"]
+[ext_resource type="Texture2D" uid="uid://7sjic3fu458s" path="res://assets/game_ui/upgrades/guesthouse_3.png" id="guesthouse_3"]
+[ext_resource type="FontFile" uid="uid://dytwhorsp2bp1" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/hotel.tres" id="hotel"]
+[ext_resource type="Texture2D" uid="uid://b58kdojepd41i" path="res://assets/game_ui/upgrades/hotel_2.png" id="hotel_2"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/MapHover.tres" id="MapHover"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/MapLabel.tres" id="MapLabel"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/MapSelected.tres" id="MapSelected"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/market.tres" id="market"]
+[ext_resource type="Texture2D" uid="uid://b0iepokxicrir" path="res://assets/game_ui/upgrades/market_2.png" id="market_2"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/reef.tres" id="reef"]
+[ext_resource type="Script" uid="uid://dcuemgyekva2y" path="res://scripts/IslandMap.gd" id="script"]
+[ext_resource type="Texture2D" uid="uid://d2ihd46uxixup" path="res://assets/game_ui/island_terrain_simple.png" id="terrain"]
+[ext_resource type="Theme" path="res://themes/game_ui/GameplayTheme.tres" id="theme"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/utilities.tres" id="utilities"]
+[ext_resource type="Texture2D" uid="uid://dbdq3pbcemt33" path="res://assets/game_ui/upgrades/utilities_2.png" id="utilities_2"]
+[ext_resource type="Texture2D" path="res://assets/game_ui/textures/waste.tres" id="waste"]
+[ext_resource type="Texture2D" uid="uid://eco7uyn8yqhi" path="res://assets/game_ui/upgrades/waste_2.png" id="waste_2"]
+
+[node name="IslandMap" type="Control" unique_id=476713226]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1028.0
+offset_bottom = 580.0
+theme = ExtResource("theme")
+script = ExtResource("script")
+
+[node name="Terrain" type="TextureRect" parent="." unique_id=272175794]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource("terrain")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Locations" type="Control" parent="." unique_id=216845123]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="Forest" type="Button" parent="Locations" unique_id=1419394274]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.18
+anchor_top = 0.32
+anchor_right = 0.18
+anchor_bottom = 0.32
+offset_left = -70.04001
+offset_top = -67.599976
+offset_right = 113.95999
+offset_bottom = 90.40001
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "forest"
+
+[node name="Icon" type="TextureRect" parent="Locations/Forest" unique_id=250435144]
+layout_mode = 0
+offset_left = 18.88889
+offset_top = -4.4444447
+offset_right = 162.88889
+offset_bottom = 119.55556
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("forest")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Forest" unique_id=265560345]
+layout_mode = 0
+offset_left = 15.555546
+offset_top = 111.11111
+offset_right = 167.55554
+offset_bottom = 142.11111
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Forest" unique_id=1968090463]
+layout_mode = 0
+offset_left = 18.555546
+offset_top = 111.11111
+offset_right = 164.55554
+offset_bottom = 142.11111
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Mangroves"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Waste" type="Button" parent="Locations" unique_id=2000152737]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.18
+anchor_right = 0.48
+anchor_bottom = 0.18
+offset_left = -100.44
+offset_top = -76.4
+offset_right = 83.56
+offset_bottom = 89.6
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "waste"
+metadata/level_textures = [ExtResource("waste"), ExtResource("waste_2")]
+metadata/level_sizes = [Vector2(128, 108), Vector2(166, 132)]
+metadata/foot_y = 132.0
+
+[node name="Icon" type="TextureRect" parent="Locations/Waste" unique_id=1430857872]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 24.0
+offset_right = 156.0
+offset_bottom = 132.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("waste")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Waste" unique_id=673092754]
+layout_mode = 0
+offset_left = 15.555562
+offset_top = 122.22224
+offset_right = 167.55556
+offset_bottom = 153.22223
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Waste" unique_id=1762283057]
+layout_mode = 0
+offset_left = 18.555563
+offset_top = 122.22224
+offset_right = 164.55556
+offset_bottom = 153.22223
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Recycling"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlotMarker" type="Panel" parent="Locations/Waste" unique_id=1577565162]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 95.555565
+offset_right = 156.37042
+offset_bottom = 121.48148
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="PlotText" type="Label" parent="Locations/Waste/PlotMarker" unique_id=133592708]
+layout_mode = 0
+offset_left = 5.6790204
+offset_top = 1.6049422
+offset_right = 137.67902
+offset_bottom = 25.604942
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 17
+text = "+ Build site"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPlate" type="Panel" parent="Locations/Waste" unique_id=1284323727]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("Badge")
+
+[node name="LevelLabel" type="Label" parent="Locations/Waste" unique_id=1851483564]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(1, 0.98, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "—"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hotel" type="Button" parent="Locations" unique_id=1870305128]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.74
+anchor_top = 0.33
+anchor_right = 0.74
+anchor_bottom = 0.33
+offset_left = -132.72003
+offset_top = -167.40001
+offset_right = 51.27997
+offset_bottom = 64.59999
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "hotel"
+metadata/level_textures = [ExtResource("hotel"), ExtResource("hotel_2")]
+metadata/level_sizes = [Vector2(134, 130), Vector2(168, 198)]
+metadata/foot_y = 198.0
+
+[node name="Icon" type="TextureRect" parent="Locations/Hotel" unique_id=969175146]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 68.0
+offset_right = 159.0
+offset_bottom = 198.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("hotel")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Hotel" unique_id=1346375000]
+layout_mode = 0
+offset_left = 15.55556
+offset_top = 186.0
+offset_right = 167.55556
+offset_bottom = 217.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Hotel" unique_id=2117016622]
+layout_mode = 0
+offset_left = 18.55556
+offset_top = 186.0
+offset_right = 164.55556
+offset_bottom = 217.0
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Bay Hotel"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlotMarker" type="Panel" parent="Locations/Hotel" unique_id=1184105567]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 159.33333
+offset_right = 156.37042
+offset_bottom = 185.25925
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="PlotText" type="Label" parent="Locations/Hotel/PlotMarker" unique_id=1510022725]
+layout_mode = 0
+offset_right = 137.67902
+offset_bottom = 25.60494
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 17
+text = "+ Build site"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPlate" type="Panel" parent="Locations/Hotel" unique_id=793665850]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("Badge")
+
+[node name="LevelLabel" type="Label" parent="Locations/Hotel" unique_id=29215498]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(1, 0.98, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "—"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Guesthouse" type="Button" parent="Locations" unique_id=694952613]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.24
+anchor_top = 0.68
+anchor_right = 0.24
+anchor_bottom = 0.68
+offset_left = -18.720001
+offset_top = -205.4
+offset_right = 165.28
+offset_bottom = -5.399994
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "guesthouse"
+metadata/level_textures = [ExtResource("guesthouse"), ExtResource("guesthouse_2"), ExtResource("guesthouse_3")]
+metadata/level_sizes = [Vector2(128, 118), Vector2(148, 144), Vector2(168, 166)]
+metadata/foot_y = 166.0
+
+[node name="Icon" type="TextureRect" parent="Locations/Guesthouse" unique_id=1541766187]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 48.0
+offset_right = 156.0
+offset_bottom = 166.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("guesthouse")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Guesthouse" unique_id=1975683277]
+layout_mode = 0
+offset_left = 15.55556
+offset_top = 155.2
+offset_right = 167.55556
+offset_bottom = 186.2
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Guesthouse" unique_id=1732481971]
+layout_mode = 0
+offset_left = 18.55556
+offset_top = 155.2
+offset_right = 164.55556
+offset_bottom = 186.2
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Guesthouse"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlotMarker" type="Panel" parent="Locations/Guesthouse" unique_id=1512069703]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 128.53333
+offset_right = 156.37042
+offset_bottom = 154.45924
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="PlotText" type="Label" parent="Locations/Guesthouse/PlotMarker" unique_id=1642424707]
+layout_mode = 0
+offset_right = 137.67902
+offset_bottom = 25.60494
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 17
+text = "+ Build site"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPlate" type="Panel" parent="Locations/Guesthouse" unique_id=2008260185]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("Badge")
+
+[node name="LevelLabel" type="Label" parent="Locations/Guesthouse" unique_id=1678118234]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(1, 0.98, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "L1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Utilities" type="Button" parent="Locations" unique_id=1083838793]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.52
+anchor_right = 0.48
+anchor_bottom = 0.52
+offset_left = -59.440002
+offset_top = -134.59998
+offset_right = 124.56
+offset_bottom = 35.400024
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "utilities"
+metadata/level_textures = [ExtResource("utilities"), ExtResource("utilities_2")]
+metadata/level_sizes = [Vector2(128, 108), Vector2(166, 136)]
+metadata/foot_y = 136.0
+
+[node name="Icon" type="TextureRect" parent="Locations/Utilities" unique_id=605872532]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 28.0
+offset_right = 156.0
+offset_bottom = 136.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("utilities")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Utilities" unique_id=1166544267]
+layout_mode = 0
+offset_left = 15.55556
+offset_top = 126.2
+offset_right = 167.55556
+offset_bottom = 157.2
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Utilities" unique_id=2054764273]
+layout_mode = 0
+offset_left = 18.55556
+offset_top = 126.2
+offset_right = 164.55556
+offset_bottom = 157.2
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Utilities"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlotMarker" type="Panel" parent="Locations/Utilities" unique_id=578526487]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 99.53333
+offset_right = 156.37042
+offset_bottom = 125.45925
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="PlotText" type="Label" parent="Locations/Utilities/PlotMarker" unique_id=1565945388]
+layout_mode = 0
+offset_right = 137.67902
+offset_bottom = 25.60494
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 17
+text = "+ Build site"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPlate" type="Panel" parent="Locations/Utilities" unique_id=523223148]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("Badge")
+
+[node name="LevelLabel" type="Label" parent="Locations/Utilities" unique_id=1152746199]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(1, 0.98, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "—"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Market" type="Button" parent="Locations" unique_id=1275715774]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.48
+anchor_top = 0.84
+anchor_right = 0.48
+anchor_bottom = 0.84
+offset_left = -47.439972
+offset_top = -169.19998
+offset_right = 136.56
+offset_bottom = 4.799988
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "market"
+metadata/level_textures = [ExtResource("market"), ExtResource("market_2")]
+metadata/level_sizes = [Vector2(136, 116), Vector2(176, 140)]
+metadata/foot_y = 140.0
+
+[node name="Icon" type="TextureRect" parent="Locations/Market" unique_id=667621831]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = 160.0
+offset_bottom = 140.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("market")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Market" unique_id=140238761]
+layout_mode = 0
+offset_left = 15.55556
+offset_top = 129.4
+offset_right = 167.55556
+offset_bottom = 160.4
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Market" unique_id=1205289942]
+layout_mode = 0
+offset_left = 18.55556
+offset_top = 129.4
+offset_right = 164.55556
+offset_bottom = 160.4
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Market"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlotMarker" type="Panel" parent="Locations/Market" unique_id=447602435]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 102.73333
+offset_right = 156.37042
+offset_bottom = 128.65926
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="PlotText" type="Label" parent="Locations/Market/PlotMarker" unique_id=1650908260]
+layout_mode = 0
+offset_right = 137.67902
+offset_bottom = 25.60494
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 17
+text = "+ Build site"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPlate" type="Panel" parent="Locations/Market" unique_id=315955678]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("Badge")
+
+[node name="LevelLabel" type="Label" parent="Locations/Market" unique_id=1434240937]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(1, 0.98, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "—"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Culture" type="Button" parent="Locations" unique_id=812191304]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7
+anchor_top = 0.68
+anchor_right = 0.7
+anchor_bottom = 0.68
+offset_left = -53.599976
+offset_top = -195.4
+offset_right = 130.40002
+offset_bottom = 2.600006
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "culture"
+metadata/level_textures = [ExtResource("culture"), ExtResource("culture_2")]
+metadata/level_sizes = [Vector2(136, 114), Vector2(168, 164)]
+metadata/foot_y = 164.0
+
+[node name="Icon" type="TextureRect" parent="Locations/Culture" unique_id=1727505790]
+layout_mode = 0
+offset_left = 24.0
+offset_top = 50.0
+offset_right = 160.0
+offset_bottom = 164.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("culture")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Culture" unique_id=1120510133]
+layout_mode = 0
+offset_left = 15.55556
+offset_top = 153.6
+offset_right = 167.55556
+offset_bottom = 184.6
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Culture" unique_id=1975308501]
+layout_mode = 0
+offset_left = 18.55556
+offset_top = 153.6
+offset_right = 164.55556
+offset_bottom = 184.6
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Heritage"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlotMarker" type="Panel" parent="Locations/Culture" unique_id=246600018]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 126.93333
+offset_right = 156.37042
+offset_bottom = 152.85925
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="PlotText" type="Label" parent="Locations/Culture/PlotMarker" unique_id=384990418]
+layout_mode = 0
+offset_right = 137.67902
+offset_bottom = 25.60494
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 17
+text = "+ Build site"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelPlate" type="Panel" parent="Locations/Culture" unique_id=1210132110]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("Badge")
+
+[node name="LevelLabel" type="Label" parent="Locations/Culture" unique_id=7871365]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 4.0
+offset_right = 180.0
+offset_bottom = 33.0
+scale = Vector2(0.9, 0.9)
+theme_override_colors/font_color = Color(1, 0.98, 0.86, 1)
+theme_override_font_sizes/font_size = 16
+text = "—"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Reef" type="Button" parent="Locations" unique_id=280374863]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.9
+anchor_top = 0.86
+anchor_right = 0.9
+anchor_bottom = 0.86
+offset_left = -95.19995
+offset_top = -78.80002
+offset_right = 88.80005
+offset_bottom = 67.19998
+scale = Vector2(0.9, 0.9)
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = ExtResource("Empty")
+theme_override_styles/pressed = ExtResource("MapSelected")
+theme_override_styles/hover = ExtResource("MapHover")
+theme_override_styles/hover_pressed = ExtResource("MapSelected")
+theme_override_styles/focus = ExtResource("MapHover")
+toggle_mode = true
+metadata/location_key = "reef"
+
+[node name="Icon" type="TextureRect" parent="Locations/Reef" unique_id=896785885]
+layout_mode = 0
+offset_left = 20.0
+offset_right = 164.0
+offset_bottom = 112.0
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+texture = ExtResource("reef")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="NamePlate" type="Panel" parent="Locations/Reef" unique_id=2037335071]
+layout_mode = 0
+offset_left = 20.000015
+offset_top = 101.8
+offset_right = 172.00002
+offset_bottom = 132.8
+scale = Vector2(0.9, 0.9)
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("MapLabel")
+
+[node name="Name" type="Label" parent="Locations/Reef" unique_id=1130068152]
+layout_mode = 0
+offset_left = 23.000015
+offset_top = 101.8
+offset_right = 169.00002
+offset_bottom = 132.8
+scale = Vector2(0.9, 0.9)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 18
+text = "Coral reef"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Boat" type="TextureRect" parent="." unique_id=1065924782]
+layout_mode = 0
+anchor_left = 0.06
+anchor_top = 0.78
+anchor_right = 0.06
+anchor_bottom = 0.78
+offset_right = 112.0
+offset_bottom = 85.0
+mouse_filter = 2
+texture = ExtResource("boat")
+expand_mode = 1
+stretch_mode = 5
+
+[connection signal="pressed" from="Locations/Forest" to="." method="select_location" binds= ["forest"]]
+[connection signal="pressed" from="Locations/Waste" to="." method="select_location" binds= ["waste"]]
+[connection signal="pressed" from="Locations/Hotel" to="." method="select_location" binds= ["hotel"]]
+[connection signal="pressed" from="Locations/Guesthouse" to="." method="select_location" binds= ["guesthouse"]]
+[connection signal="pressed" from="Locations/Utilities" to="." method="select_location" binds= ["utilities"]]
+[connection signal="pressed" from="Locations/Market" to="." method="select_location" binds= ["market"]]
+[connection signal="pressed" from="Locations/Culture" to="." method="select_location" binds= ["culture"]]
+[connection signal="pressed" from="Locations/Reef" to="." method="select_location" binds= ["reef"]]

@@ -1,0 +1,151 @@
+[gd_scene load_steps=12 format=3]
+
+[ext_resource type="Theme" path="res://themes/game_ui/GameplayTheme.tres" id="theme"]
+[ext_resource type="Script" path="res://scripts/GameDialog.gd" id="script"]
+[ext_resource type="FontFile" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Primary.tres" id="Primary"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryHover.tres" id="PrimaryHover"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryPressed.tres" id="PrimaryPressed"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryDisabled.tres" id="PrimaryDisabled"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/WidePanel.tres" id="WidePanel"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/CompactPanel.tres" id="CompactPanel"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/MapLabel.tres" id="MapLabel"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Badge.tres" id="Badge"]
+
+
+
+[node name="GameDialog" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("script")
+theme = ExtResource("theme")
+
+[node name="Shade" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.04, 0.13, 0.12, 0.76)
+
+[node name="DialogPanel" type="Panel" parent="."]
+unique_name_in_owner = true
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = -490.0
+offset_right = 490.0
+offset_top = -345.0
+offset_bottom = 345.0
+theme_override_styles/panel = ExtResource("WidePanel")
+
+[node name="DialogTitle" type="Label" parent="DialogPanel"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 70.0
+offset_top = 57.0
+offset_right = 910.0
+offset_bottom = 117.0
+autowrap_mode = 3
+theme_override_font_sizes/font_size = 32
+text = "Island report"
+mouse_filter = 2
+theme_override_fonts/font = ExtResource("heading")
+
+[node name="DialogMessage" type="RichTextLabel" parent="DialogPanel"]
+unique_name_in_owner = true
+anchor_bottom = 1.0
+offset_left = 72.0
+offset_top = 134.0
+offset_right = 908.0
+offset_bottom = -156.0
+text = "Your island report appears here."
+theme_override_font_sizes/normal_font_size = 22
+
+[node name="ActionChoices" type="Control" parent="DialogPanel"]
+unique_name_in_owner = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -390.0
+offset_right = 916.0
+offset_bottom = -170.0
+visible = false
+mouse_filter = 1
+
+[node name="CleanupAction" type="Button" parent="DialogPanel/ActionChoices"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 852.0
+offset_bottom = 64.0
+text = "Collect waste • 100 coins • -25 waste, +3 marine"
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="SuppliesAction" type="Button" parent="DialogPanel/ActionChoices"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 78.0
+offset_right = 852.0
+offset_bottom = 142.0
+text = "Emergency supplies • 80 coins • +40 water & energy"
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="CultureAction" type="Button" parent="DialogPanel/ActionChoices"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 0.0
+offset_top = 156.0
+offset_right = 852.0
+offset_bottom = 220.0
+text = "Cultural workshop • 90 coins • +8 satisfaction"
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 22
+
+[node name="ConfirmDayButton" type="Button" parent="DialogPanel"]
+unique_name_in_owner = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_right = 916.0
+offset_top = -198.0
+offset_bottom = -134.0
+visible = false
+text = "End day anyway"
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+
+[node name="CloseDialogButton" type="Button" parent="DialogPanel"]
+unique_name_in_owner = true
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_right = 916.0
+offset_top = -120.0
+offset_bottom = -56.0
+visible = true
+text = "Continue"
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = ExtResource("Primary")
+theme_override_styles/hover = ExtResource("PrimaryHover")
+theme_override_styles/pressed = ExtResource("PrimaryPressed")
+theme_override_styles/hover_pressed = ExtResource("PrimaryPressed")
+theme_override_styles/disabled = ExtResource("PrimaryDisabled")
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+
+[connection signal="pressed" from="DialogPanel/ActionChoices/CleanupAction" to="." method="_on_action_pressed" binds=["cleanup"]]
+[connection signal="pressed" from="DialogPanel/ActionChoices/SuppliesAction" to="." method="_on_action_pressed" binds=["supplies"]]
+[connection signal="pressed" from="DialogPanel/ActionChoices/CultureAction" to="." method="_on_action_pressed" binds=["culture"]]
+[connection signal="pressed" from="DialogPanel/ConfirmDayButton" to="." method="_on_end_day_pressed"]
+[connection signal="pressed" from="DialogPanel/CloseDialogButton" to="." method="close"]

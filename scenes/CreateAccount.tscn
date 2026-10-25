@@ -1,135 +1,138 @@
 [gd_scene format=3 uid="uid://dnch3vup5doj4"]
 
-[ext_resource type="Script" uid="uid://bi3i8p2q781gu" path="res://scripts/CreateAccount.gd" id="1_script"]
-[ext_resource type="Texture2D" uid="uid://ce7d0mwt5bqag" path="res://assets/Serene sustainable island escape.png" id="2_3tfp6"]
+[ext_resource type="Script" uid="uid://bi3i8p2q781gu" path="res://scripts/CreateAccount.gd" id="1"]
+[ext_resource type="Theme" path="res://themes/MenuTheme.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://isc3low310js" path="res://assets/background/Sunlit Filipino Eco-Island Haven.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://u051h15lk2ji" path="res://assets/Title.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://cretw6o30jckt" path="res://assets/UI/Ivory Bamboo-Bound Game UI Panel.png" id="5"]
+[ext_resource type="FontFile" uid="uid://bo1epm7b2ocsb" path="res://assets/fonts/BreeSerif-Regular.ttf" id="6"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
-content_margin_left = 40.0
-content_margin_top = 36.0
-content_margin_right = 40.0
-content_margin_bottom = 36.0
-bg_color = Color(0.231373, 0.192157, 0.407843, 0.95)
-corner_radius_top_left = 24
-corner_radius_top_right = 24
-corner_radius_bottom_right = 24
-corner_radius_bottom_left = 24
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_field"]
-content_margin_left = 16.0
-content_margin_top = 8.0
-content_margin_right = 16.0
-content_margin_bottom = 8.0
-bg_color = Color(0.35, 0.3, 0.55, 0.6)
-corner_radius_top_left = 18
-corner_radius_top_right = 18
-corner_radius_bottom_right = 18
-corner_radius_bottom_left = 18
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_primary"]
-bg_color = Color(0.929412, 0.929412, 0.756863, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_secondary"]
-bg_color = Color(0.4, 0.35, 0.6, 0.5)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 0.4)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[node name="CreateAccount" type="Control" unique_id=1343629099]
+[node name="CreateAccount" type="Control" unique_id=2042312473]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_script")
+theme = ExtResource("2")
+script = ExtResource("1")
 
-[node name="Background" type="Sprite2D" parent="." unique_id=1248376773]
-position = Vector2(960, 540.00006)
-scale = Vector2(1.1482466, 1.1482466)
-texture = ExtResource("2_3tfp6")
-
-[node name="CenterContainer" type="CenterContainer" parent="." unique_id=893564205]
-layout_mode = 1
-anchors_preset = 15
+[node name="Background" type="TextureRect" parent="." unique_id=496350507]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="AuthPanel" type="PanelContainer" parent="CenterContainer" unique_id=111374940]
-custom_minimum_size = Vector2(700, 0)
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+[node name="Title" type="TextureRect" parent="." unique_id=1697302347]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 244.0
+offset_right = 1091.44
+offset_bottom = 862.0
+mouse_filter = 2
+texture = ExtResource("4")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="VBox" type="VBoxContainer" parent="CenterContainer/AuthPanel" unique_id=584122491]
-layout_mode = 2
-theme_override_constants/separation = 14
+[node name="Panel" type="TextureRect" parent="." unique_id=1363799973]
+layout_mode = 0
+offset_left = 1027.0
+offset_top = 103.0
+offset_right = 1855.0
+offset_bottom = 981.0
+mouse_filter = 2
+texture = ExtResource("5")
+expand_mode = 1
 
-[node name="WelcomeLabel" type="Label" parent="CenterContainer/AuthPanel/VBox" unique_id=1428649901]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_font_sizes/font_size = 30
-text = "Create Account"
+[node name="HeadingLabel" type="Label" parent="." unique_id=1474845603]
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 205.0
+offset_right = 1751.0
+offset_bottom = 255.0
+theme_override_fonts/font = ExtResource("6")
+theme_override_font_sizes/font_size = 34
+text = "Create an Account"
 horizontal_alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="CenterContainer/AuthPanel/VBox" unique_id=1893197852]
-layout_mode = 2
-theme_override_colors/font_color = Color(0.85, 0.85, 0.95, 1)
-text = "Start your island journey!"
+[node name="SubtitleLabel" type="Label" parent="." unique_id=889191827]
+layout_mode = 0
+offset_left = 1131.0
+offset_top = 255.0
+offset_right = 1751.0
+offset_bottom = 290.0
+text = "Your island journey starts here."
 horizontal_alignment = 1
 
-[node name="UsernameField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=2015477953]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_field")
+[node name="UsernameField" type="LineEdit" parent="." unique_id=2089026905]
+layout_mode = 0
+offset_left = 1202.0
+offset_top = 310.0
+offset_right = 2567.714
+offset_bottom = 499.25
+scale = Vector2(0.35, 0.35)
 placeholder_text = "Username"
 
-[node name="EmailField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=367210924]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_field")
-placeholder_text = "Email"
+[node name="EmailField" type="LineEdit" parent="." unique_id=108764996]
+layout_mode = 0
+offset_left = 1202.0
+offset_top = 382.0
+offset_right = 2567.714
+offset_bottom = 571.25
+scale = Vector2(0.35, 0.35)
+placeholder_text = "Email address"
 
-[node name="PasswordField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=954236958]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_field")
+[node name="PasswordField" type="LineEdit" parent="." unique_id=1491742924]
+layout_mode = 0
+offset_left = 1202.0
+offset_top = 454.0
+offset_right = 2567.714
+offset_bottom = 643.25
+scale = Vector2(0.35, 0.35)
 placeholder_text = "Password"
 secret = true
 
-[node name="ConfirmPasswordField" type="LineEdit" parent="CenterContainer/AuthPanel/VBox" unique_id=1819458512]
-custom_minimum_size = Vector2(0, 44)
-layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_field")
-placeholder_text = "Confirm Password"
+[node name="ConfirmPasswordField" type="LineEdit" parent="." unique_id=630018750]
+layout_mode = 0
+offset_left = 1202.0
+offset_top = 526.0
+offset_right = 2567.714
+offset_bottom = 715.25
+scale = Vector2(0.35, 0.35)
+placeholder_text = "Confirm password"
 secret = true
 
-[node name="CreateButton" type="Button" parent="CenterContainer/AuthPanel/VBox" unique_id=265675443]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-theme_override_colors/font_color = Color(0.2, 0.15, 0.4, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_primary")
-text = "➕ Create Account"
+[node name="CreateButton" type="Button" parent="." unique_id=1219682355]
+layout_mode = 0
+offset_left = 1202.0
+offset_top = 620.0
+offset_right = 2397.0
+offset_bottom = 794.125
+scale = Vector2(0.4, 0.4)
+text = "Create Account"
 
-[node name="StatusLabel" type="Label" parent="CenterContainer/AuthPanel/VBox" unique_id=1618521344]
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 0.85, 0.85, 1)
+[node name="StatusLabel" type="Label" parent="." unique_id=653369271]
+layout_mode = 0
+offset_left = 1171.0
+offset_top = 703.0
+offset_right = 1711.0
+offset_bottom = 767.0
+theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
-autowrap_mode = 2
+vertical_alignment = 1
+autowrap_mode = 3
 
-[node name="BackButton" type="Button" parent="CenterContainer/AuthPanel/VBox" unique_id=840746315]
-custom_minimum_size = Vector2(0, 48)
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_styles/normal = SubResource("StyleBoxFlat_secondary")
-text = "← Back to Login"
+[node name="BackButton" type="Button" parent="." unique_id=2138187640]
+layout_mode = 0
+offset_left = 1202.0
+offset_top = 785.0
+offset_right = 2397.0
+offset_bottom = 959.125
+scale = Vector2(0.4, 0.4)
+text = "Back to Login"
+
+[connection signal="pressed" from="CreateButton" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_pressed"]
