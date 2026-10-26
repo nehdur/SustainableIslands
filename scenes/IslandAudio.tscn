@@ -1,0 +1,115 @@
+[gd_scene load_steps=20 format=3]
+
+[ext_resource type="Script" path="res://scripts/IslandAudio.gd" id="1"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/island_morning.ogg" id="2"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/ocean_breeze.ogg" id="3"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/hover.wav" id="4"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/click.wav" id="5"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/build.wav" id="6"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/upgrade.wav" id="7"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/hire.wav" id="8"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/release.wav" id="9"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/forest.wav" id="10"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/reef.wav" id="11"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/cleanup.wav" id="12"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/supplies.wav" id="13"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/culture.wav" id="14"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/day.wav" id="15"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/success.wav" id="16"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/review.wav" id="17"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/error.wav" id="18"]
+[ext_resource type="AudioStream" path="res://assets/audio/island/save.wav" id="19"]
+
+[node name="IslandAudio" type="Node"]
+process_mode = 3
+script = ExtResource("1")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2")
+volume_db = -8.0
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3")
+volume_db = -18.0
+
+[node name="Effects" type="Node" parent="."]
+
+[node name="hover" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("4")
+volume_db = -20.0
+max_polyphony = 2
+
+[node name="click" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("5")
+volume_db = -12.0
+max_polyphony = 2
+
+[node name="build" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("6")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="upgrade" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("7")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="hire" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("8")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="release" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("9")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="forest" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("10")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="reef" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("11")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="cleanup" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("12")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="supplies" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("13")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="culture" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("14")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="day" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("15")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="success" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("16")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="review" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("17")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="error" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("18")
+volume_db = -7.0
+max_polyphony = 2
+
+[node name="save" type="AudioStreamPlayer" parent="Effects"]
+stream = ExtResource("19")
+volume_db = -7.0
+max_polyphony = 2

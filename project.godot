@@ -25,6 +25,7 @@ GameData="*res://autoloads/GameData.gd"
 GameState="*res://autoloads/GameState.gd"
 Supabase="*res://autoloads/Supabase.gd"
 IslandGame="*res://autoloads/IslandGame.gd"
+IslandAudio="*res://scenes/IslandAudio.tscn"
 
 [display]
 

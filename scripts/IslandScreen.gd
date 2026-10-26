@@ -12,7 +12,6 @@ var is_syncing: bool = false
 @onready var day_button: Button = %NextDayButton
 @onready var sound_button: Button = %SoundButton
 @onready var cloud_button: Button = %CloudButton
-@onready var audio: AudioStreamPlayer = %Audio
 @onready var modal: Control = %GameDialog
 
 @onready var metrics: Dictionary = {
@@ -138,34 +137,40 @@ func _on_conserve_pressed() -> void:
 
 
 func play_sound(sound_name: String) -> void:
-	if not IslandGame.muted:
-		audio.stop()
-		audio.stream = load(
-			"res://assets/audio/%s.wav" % sound_name
-		)
-		audio.play()
+	IslandAudio.play_sfx(sound_name)
 
 
-func show_message(message: String) -> void:
+func show_message(message: String, sound_name: String = "") -> void:
 	toast.text = message
 	toast.tooltip_text = message
-	play_sound("click")
+	if not sound_name.is_empty():
+		play_sound(sound_name)
+
+
+func show_action(message: String, previous_points: int, sound_name: String) -> void:
+	var succeeded: bool = int(IslandGame.data.ap) < previous_points
+	show_message(message, sound_name if succeeded else "error")
 
 
 func do_build() -> void:
-	show_message(IslandGame.build(selected))
+	var points: int = int(IslandGame.data.ap)
+	var sound_name: String = "build" if int(IslandGame.data.buildings[selected]) == 0 else "upgrade"
+	show_action(IslandGame.build(selected), points, sound_name)
 
 
 func do_hire() -> void:
-	show_message(IslandGame.hire(selected))
+	var points: int = int(IslandGame.data.ap)
+	show_action(IslandGame.hire(selected), points, "hire")
 
 
 func do_release() -> void:
-	show_message(IslandGame.release(selected))
+	var points: int = int(IslandGame.data.ap)
+	show_action(IslandGame.release(selected), points, "release")
 
 
 func do_action(kind: String) -> void:
-	show_message(IslandGame.conserve(kind))
+	var points: int = int(IslandGame.data.ap)
+	show_action(IslandGame.conserve(kind), points, kind)
 	close_modal()
 
 
@@ -232,11 +237,11 @@ func show_journal() -> void:
 
 func advance_day() -> void:
 	var report: Dictionary = IslandGame.end_day()
-	play_sound("day")
 
 	if bool(report.get("finished", false)):
 		show_ending()
 	else:
+		play_sound("day")
 		dialog(
 			"Daily island report",
 			str(report.get("report", "")),
@@ -269,7 +274,7 @@ func show_ending() -> void:
 		650
 	)
 
-	play_sound("success" if success else "day")
+	play_sound("success" if success else "review")
 
 
 # Saving and navigation
@@ -277,12 +282,14 @@ func show_ending() -> void:
 
 func toggle_sound() -> void:
 	IslandGame.toggle_sound()
+	IslandAudio.set_muted(IslandGame.muted)
+	play_sound("click")
 	refresh()
 
 
 func go_menu() -> void:
 	if is_syncing:
-		show_message("Please wait for cloud sync to finish.")
+		show_message("Please wait for cloud sync to finish.", "error")
 		return
 
 	IslandGame.save_local()
@@ -297,13 +304,13 @@ func sync_cloud() -> void:
 		return
 
 	if not IslandGame.save_local():
-		show_message(IslandGame.storage_notice)
+		show_message(IslandGame.storage_notice, "error")
 		return
 
 	if not Supabase.is_logged_in():
 		show_message(
             "Saved on this device. "
-			+ "Guest mode does not use cloud storage."
+			+ "Guest mode does not use cloud storage.", "save"
 		)
 		return
 
@@ -311,12 +318,12 @@ func sync_cloud() -> void:
 	cloud_button.disabled = true
 	cloud_button.text = "Syncing…"
 
-	await IslandGame.cloud_save()
+	var result: Dictionary = await IslandGame.cloud_save()
 
 	is_syncing = false
 	cloud_button.disabled = false
 	cloud_button.text = "Save / cloud sync"
-	show_message(IslandGame.last_sync)
+	show_message(IslandGame.last_sync, "save" if bool(result.get("ok", false)) else "error")
 
 
 func _unhandled_key_input(event: InputEvent) -> void:

@@ -1,0 +1,11 @@
+SustainableIsland audio
+
+Island Morning: original instrumental composition, 88 BPM, G major, 87.273 seconds.
+Ocean Breeze: original synthesized coastal ambience, 32 seconds.
+Effects: 16 original synthesized sounds for the SustainableIsland project.
+
+Created specifically for this project using procedural audio synthesis.
+No external recordings, third-party samples, or existing songs were used.
+
+Music and ambience: stereo OGG Vorbis, 44.1 kHz.
+Effects: stereo PCM WAV, 44.1 kHz, 16-bit.

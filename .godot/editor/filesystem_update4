@@ -1,1 +1,2 @@
-res://scenes/LoginScreen.tscn
+res://scripts/IslandScreen.gd
+res://scenes/CreateAccount.tscn
