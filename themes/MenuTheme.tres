@@ -1,29 +1,61 @@
-[gd_resource type="Theme" load_steps=6 format=3]
+[gd_resource type="Theme" format=3 uid="uid://qihsr1slcc78"]
 
-[ext_resource type="FontFile" path="res://assets/fonts/Nunito-Regular.ttf" id="1"]
-[ext_resource type="FontFile" path="res://assets/fonts/BreeSerif-Regular.ttf" id="2"]
-[ext_resource type="StyleBox" path="res://themes/Button1.tres" id="3"]
-[ext_resource type="StyleBox" path="res://themes/Button1Dark.tres" id="4"]
-[ext_resource type="StyleBox" path="res://themes/Textbox.tres" id="5"]
+[ext_resource type="FontFile" uid="uid://4fk3mxmtf6a0" path="res://assets/fonts/Nunito-Regular.ttf" id="body"]
+[ext_resource type="StyleBox" uid="uid://dxl3fn6ucm0hb" path="res://themes/Button1.tres" id="button"]
+[ext_resource type="Texture2D" uid="uid://b07g2v4vg3ehm" path="res://assets/UI/check_on.svg" id="checked"]
+[ext_resource type="StyleBox" uid="uid://e04a11s6okva" path="res://themes/Textbox.tres" id="field"]
+[ext_resource type="StyleBox" path="res://themes/MenuFocus.tres" id="focus"]
+[ext_resource type="FontFile" uid="uid://bo1epm7b2ocsb" path="res://assets/fonts/BreeSerif-Regular.ttf" id="heading"]
+[ext_resource type="StyleBox" uid="uid://bye724a88t8an" path="res://themes/Button1Dark.tres" id="pressed"]
+[ext_resource type="Texture2D" uid="uid://ocqtuqvpj86j" path="res://assets/UI/check_off.svg" id="unchecked"]
 
 [resource]
-default_font = ExtResource("1")
+default_font = ExtResource("body")
 default_font_size = 22
-Label/colors/font_color = Color(0.137, 0.247, 0.263, 1)
 Button/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_disabled_color = Color(0.42, 0.48, 0.42, 1)
+Button/colors/font_focus_color = Color(0.18, 0.42, 0.3, 1)
 Button/colors/font_hover_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_hover_pressed_color = Color(0.137, 0.247, 0.263, 1)
 Button/colors/font_pressed_color = Color(0.137, 0.247, 0.263, 1)
-Button/colors/font_focus_color = Color(0.137, 0.247, 0.263, 1)
-Button/fonts/font = ExtResource("2")
 Button/font_sizes/font_size = 60
-Button/styles/normal = ExtResource("3")
-Button/styles/hover = ExtResource("4")
-Button/styles/pressed = ExtResource("4")
-Button/styles/hover_pressed = ExtResource("4")
-Button/styles/disabled = ExtResource("3")
-Button/styles/focus = ExtResource("3")
-LineEdit/fonts/font = ExtResource("1")
+Button/fonts/font = ExtResource("heading")
+Button/styles/disabled = ExtResource("button")
+Button/styles/focus = ExtResource("focus")
+Button/styles/hover = ExtResource("pressed")
+Button/styles/hover_pressed = ExtResource("pressed")
+Button/styles/normal = ExtResource("button")
+Button/styles/pressed = ExtResource("pressed")
+CheckBox/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+CheckBox/colors/font_focus_color = Color(0.18, 0.42, 0.3, 1)
+CheckBox/colors/font_hover_color = Color(0.18, 0.42, 0.3, 1)
+CheckBox/colors/font_hover_pressed_color = Color(0.18, 0.42, 0.3, 1)
+CheckBox/colors/font_pressed_color = Color(0.18, 0.42, 0.3, 1)
+CheckBox/fonts/font = ExtResource("body")
+CheckBox/icons/checked = ExtResource("checked")
+CheckBox/icons/checked_disabled = ExtResource("checked")
+CheckBox/icons/unchecked = ExtResource("unchecked")
+CheckBox/icons/unchecked_disabled = ExtResource("unchecked")
+CheckBox/styles/disabled = ExtResource("focus")
+CheckBox/styles/focus = ExtResource("focus")
+CheckBox/styles/hover = ExtResource("focus")
+CheckBox/styles/hover_pressed = ExtResource("focus")
+CheckBox/styles/normal = ExtResource("focus")
+CheckBox/styles/pressed = ExtResource("focus")
+Label/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+LineEdit/colors/caret_color = Color(1, 0.96, 0.79, 1)
+LineEdit/colors/font_color = Color(0.98, 0.97, 0.88, 1)
+LineEdit/colors/font_placeholder_color = Color(0.82, 0.88, 0.79, 1)
+LineEdit/colors/font_uneditable_color = Color(0.8, 0.86, 0.77, 1)
+LineEdit/colors/selection_color = Color(0.3, 0.53, 0.39, 1)
 LineEdit/font_sizes/font_size = 50
-LineEdit/styles/normal = ExtResource("5")
-LineEdit/styles/read_only = ExtResource("5")
-LineEdit/styles/focus = ExtResource("5")
+LineEdit/fonts/font = ExtResource("body")
+LineEdit/styles/focus = ExtResource("focus")
+LineEdit/styles/normal = ExtResource("field")
+LineEdit/styles/read_only = ExtResource("field")
+LinkButton/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+LinkButton/colors/font_focus_color = Color(0.18, 0.42, 0.3, 1)
+LinkButton/colors/font_hover_color = Color(0.18, 0.42, 0.3, 1)
+LinkButton/colors/font_pressed_color = Color(0.18, 0.42, 0.3, 1)
+LinkButton/fonts/font = ExtResource("body")
+LinkButton/styles/focus = ExtResource("focus")

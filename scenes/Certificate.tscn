@@ -1,0 +1,351 @@
+[gd_scene format=3 uid="uid://cpfo5bsy6x384"]
+
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryDisabled.tres" id="disabled"]
+[ext_resource type="StyleBox" uid="uid://e04a11s6okva" path="res://themes/Textbox.tres" id="field"]
+[ext_resource type="FontFile" uid="uid://dytwhorsp2bp1" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryHover.tres" id="hover"]
+[ext_resource type="StyleBox" uid="uid://ceftl0xuwmow1" path="res://themes/game_ui/WidePanel.tres" id="panel"]
+[ext_resource type="Texture2D" uid="uid://5246uatl3lge" path="res://assets/game_ui/certificate_template.png" id="paper"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryPressed.tres" id="pressed"]
+[ext_resource type="StyleBox" path="res://themes/game_ui/Primary.tres" id="primary"]
+[ext_resource type="Script" uid="uid://kgpq28d5uygi" path="res://scripts/Certificate.gd" id="script"]
+[ext_resource type="Theme" uid="uid://dk12q5325jf2y" path="res://themes/game_ui/GameplayTheme.tres" id="theme"]
+
+[sub_resource type="StyleBoxEmpty" id="EmptyFocus"]
+
+[node name="Certificate" type="Control" unique_id=30773583]
+visible = false
+z_index = 30
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("theme")
+script = ExtResource("script")
+
+[node name="Shade" type="ColorRect" parent="." unique_id=219949566]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.025, 0.09, 0.07, 0.82)
+
+[node name="NamePrompt" type="Control" parent="." unique_id=764333910]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PromptPanel" type="Panel" parent="NamePrompt" unique_id=1312032891]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.0
+offset_top = -255.0
+offset_right = 420.0
+offset_bottom = 255.0
+theme_override_styles/panel = ExtResource("panel")
+
+[node name="PromptTitle" type="Label" parent="NamePrompt/PromptPanel" unique_id=1426352294]
+layout_mode = 0
+offset_left = 90.0
+offset_top = 82.0
+offset_right = 750.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 32
+text = "Your island, your achievement"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="PromptMessage" type="Label" parent="NamePrompt/PromptPanel" unique_id=537441102]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 144.0
+offset_right = 740.0
+offset_bottom = 208.0
+theme_override_font_sizes/font_size = 22
+text = "All goals completed!
+Enter your full name for your achievement certificate."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NameField" type="LineEdit" parent="NamePrompt/PromptPanel" unique_id=2017667237]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 220.0
+offset_right = 1380.0
+offset_bottom = 410.0
+scale = Vector2(0.5, 0.5)
+focus_next = NodePath("../ViewButton")
+focus_previous = NodePath("../BackButton")
+theme_override_colors/font_color = Color(0.98, 0.97, 0.88, 1)
+theme_override_colors/font_placeholder_color = Color(0.82, 0.88, 0.79, 1)
+theme_override_colors/caret_color = Color(1, 0.96, 0.79, 1)
+theme_override_colors/selection_color = Color(0.3, 0.53, 0.39, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("field")
+theme_override_styles/read_only = ExtResource("field")
+theme_override_styles/focus = SubResource("EmptyFocus")
+placeholder_text = "Enter your full name"
+max_length = 80
+
+[node name="ErrorLabel" type="Label" parent="NamePrompt/PromptPanel" unique_id=1419451296]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 322.0
+offset_right = 740.0
+offset_bottom = 354.0
+theme_override_colors/font_color = Color(0.56, 0.22, 0.14, 1)
+theme_override_font_sizes/font_size = 18
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="BackButton" type="Button" parent="NamePrompt/PromptPanel" unique_id=2125882345]
+layout_mode = 0
+offset_left = 112.0
+offset_top = 374.0
+offset_right = 392.0
+offset_bottom = 438.0
+focus_neighbor_left = NodePath("../NameField")
+focus_neighbor_top = NodePath("../NameField")
+focus_neighbor_right = NodePath("../NameField")
+focus_neighbor_bottom = NodePath("../NameField")
+focus_next = NodePath("../NameField")
+focus_previous = NodePath("../ViewButton")
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("EmptyFocus")
+text = "Back to results"
+
+[node name="ViewButton" type="Button" parent="NamePrompt/PromptPanel" unique_id=947941874]
+layout_mode = 0
+offset_left = 420.0
+offset_top = 374.0
+offset_right = 728.0
+offset_bottom = 438.0
+focus_neighbor_left = NodePath("../BackButton")
+focus_neighbor_top = NodePath("../BackButton")
+focus_neighbor_right = NodePath("../BackButton")
+focus_neighbor_bottom = NodePath("../BackButton")
+focus_next = NodePath("../BackButton")
+focus_previous = NodePath("../NameField")
+mouse_default_cursor_shape = 2
+theme_override_colors/font_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_focus_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_color = Color(1, 0.98, 0.88, 1)
+theme_override_colors/font_hover_pressed_color = Color(1, 0.98, 0.88, 1)
+theme_override_styles/normal = ExtResource("primary")
+theme_override_styles/pressed = ExtResource("pressed")
+theme_override_styles/hover = ExtResource("hover")
+theme_override_styles/hover_pressed = ExtResource("pressed")
+theme_override_styles/disabled = ExtResource("disabled")
+theme_override_styles/focus = SubResource("EmptyFocus")
+text = "View certificate"
+
+[node name="CertificatePage" type="Control" parent="." unique_id=662101222]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Paper" type="TextureRect" parent="CertificatePage" unique_id=1977611223]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -660.0
+offset_top = -480.0
+offset_right = 660.0
+offset_bottom = 400.0
+mouse_filter = 2
+texture = ExtResource("paper")
+expand_mode = 1
+
+[node name="GameTitle" type="Label" parent="CertificatePage/Paper" unique_id=858735629]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 82.0
+offset_right = 1160.0
+offset_bottom = 120.0
+theme_override_colors/font_color = Color(0.28, 0.42, 0.24, 1)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 24
+text = "SUSTAINABLEISLANDS"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CertificateTitle" type="Label" parent="CertificatePage/Paper" unique_id=1532952702]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 143.0
+offset_right = 1195.0
+offset_bottom = 215.0
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 48
+text = "Certificate of Achievement"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="AwardedTo" type="Label" parent="CertificatePage/Paper" unique_id=744754064]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 244.0
+offset_right = 1160.0
+offset_bottom = 276.0
+theme_override_colors/font_color = Color(0.4, 0.43, 0.3, 1)
+theme_override_font_sizes/font_size = 18
+text = "THIS CERTIFICATE IS AWARDED TO"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="RecipientName" type="Label" parent="CertificatePage/Paper" unique_id=1490065612]
+layout_mode = 0
+offset_left = 100.0
+offset_top = 282.0
+offset_right = 1220.0
+offset_bottom = 370.0
+theme_override_colors/font_color = Color(0.13, 0.32, 0.25, 1)
+theme_override_fonts/font = ExtResource("heading")
+theme_override_font_sizes/font_size = 54
+text = "Your Full Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="NameUnderline" type="ColorRect" parent="CertificatePage/Paper" unique_id=1712811819]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 375.0
+offset_right = 1110.0
+offset_bottom = 377.0
+mouse_filter = 2
+color = Color(0.68, 0.52, 0.22, 0.75)
+
+[node name="AchievementText" type="Label" parent="CertificatePage/Paper" unique_id=1330758551]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 404.0
+offset_right = 1160.0
+offset_bottom = 486.0
+theme_override_font_sizes/font_size = 25
+text = "For meeting every goal of the sustainable tourism challenge:
+balancing local livelihoods, visitor experience, and nature."
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ResultsLabel" type="Label" parent="CertificatePage/Paper" unique_id=715759627]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 511.0
+offset_right = 1170.0
+offset_bottom = 547.0
+theme_override_colors/font_color = Color(0.22, 0.39, 0.27, 1)
+theme_override_font_sizes/font_size = 22
+text = "Rating 87/100  •  Local jobs 8  •  Funds 2192 coins"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="HabitatsLabel" type="Label" parent="CertificatePage/Paper" unique_id=767184564]
+layout_mode = 0
+offset_left = 150.0
+offset_top = 552.0
+offset_right = 1170.0
+offset_bottom = 584.0
+theme_override_colors/font_color = Color(0.22, 0.39, 0.27, 1)
+theme_override_font_sizes/font_size = 21
+text = "Marine health 76/100  •  Mangrove health 92/100"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CompletionLabel" type="Label" parent="CertificatePage/Paper" unique_id=352663685]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 600.0
+offset_right = 1160.0
+offset_bottom = 630.0
+theme_override_font_sizes/font_size = 19
+text = "All five goals achieved • 14-day season completed"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="FooterLabel" type="Label" parent="CertificatePage/Paper" unique_id=1013191120]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 638.0
+offset_right = 1160.0
+offset_bottom = 664.0
+theme_override_colors/font_color = Color(0.4, 0.43, 0.3, 1)
+theme_override_font_sizes/font_size = 16
+text = "SustainableIslands • Game achievement"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="EditNameButton" type="Button" parent="CertificatePage" unique_id=1794144501]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -286.0
+offset_top = -112.0
+offset_right = -18.0
+offset_bottom = -48.0
+focus_neighbor_left = NodePath("../CloseButton")
+focus_neighbor_top = NodePath("../CloseButton")
+focus_neighbor_right = NodePath("../CloseButton")
+focus_neighbor_bottom = NodePath("../CloseButton")
+focus_next = NodePath("../CloseButton")
+focus_previous = NodePath("../CloseButton")
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("EmptyFocus")
+text = "Edit name"
+
+[node name="CloseButton" type="Button" parent="CertificatePage" unique_id=494713548]
+layout_mode = 0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -112.0
+offset_right = 286.0
+offset_bottom = -48.0
+focus_neighbor_left = NodePath("../EditNameButton")
+focus_neighbor_top = NodePath("../EditNameButton")
+focus_neighbor_right = NodePath("../EditNameButton")
+focus_neighbor_bottom = NodePath("../EditNameButton")
+focus_next = NodePath("../EditNameButton")
+focus_previous = NodePath("../EditNameButton")
+mouse_default_cursor_shape = 2
+theme_override_styles/focus = SubResource("EmptyFocus")
+text = "Back to results"
+
+[connection signal="text_submitted" from="NamePrompt/PromptPanel/NameField" to="." method="_on_name_submitted"]
+[connection signal="pressed" from="NamePrompt/PromptPanel/BackButton" to="." method="close"]
+[connection signal="pressed" from="NamePrompt/PromptPanel/ViewButton" to="." method="show_certificate"]
+[connection signal="pressed" from="CertificatePage/EditNameButton" to="." method="edit_name"]
+[connection signal="pressed" from="CertificatePage/CloseButton" to="." method="close"]

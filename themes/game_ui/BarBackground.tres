@@ -1,13 +1,13 @@
-[gd_resource type="StyleBoxFlat" format=3]
+[gd_resource type="StyleBoxFlat" format=3 uid="uid://cdxh6e0e3a8ea"]
+
 [resource]
 bg_color = Color(0.16, 0.3, 0.26, 0.14)
-draw_center = true
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_left = 7
-corner_radius_bottom_right = 7
-border_color = Color(0.66, 0.56, 0.32, 0.55)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
+border_color = Color(0.66, 0.56, 0.32, 0.55)
+corner_radius_top_left = 7
+corner_radius_top_right = 7
+corner_radius_bottom_right = 7
+corner_radius_bottom_left = 7

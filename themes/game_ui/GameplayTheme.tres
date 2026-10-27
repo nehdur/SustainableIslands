@@ -1,32 +1,33 @@
-[gd_resource type="Theme" load_steps=11 format=3]
-[ext_resource type="FontFile" path="res://assets/game_ui/fonts/Nunito-Regular.ttf" id="body"]
-[ext_resource type="FontFile" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/Button.tres" id="Button"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/ButtonHover.tres" id="ButtonHover"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/ButtonPressed.tres" id="ButtonPressed"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/ButtonDisabled.tres" id="ButtonDisabled"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/Focus.tres" id="Focus"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/Panel.tres" id="Panel"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/BarBackground.tres" id="BarBackground"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/BarForest.tres" id="BarForest"]
+[gd_resource type="Theme" format=3 uid="uid://dk12q5325jf2y"]
+
+[ext_resource type="StyleBox" uid="uid://cdxh6e0e3a8ea" path="res://themes/game_ui/BarBackground.tres" id="BarBackground"]
+[ext_resource type="StyleBox" uid="uid://bpw22pauucf2l" path="res://themes/game_ui/BarForest.tres" id="BarForest"]
+[ext_resource type="FontFile" uid="uid://bqhdixfkgxpfn" path="res://assets/game_ui/fonts/Nunito-Regular.ttf" id="body"]
+[ext_resource type="StyleBox" uid="uid://byiebay7jg1j1" path="res://themes/game_ui/Button.tres" id="Button"]
+[ext_resource type="StyleBox" uid="uid://ct1j34df55mni" path="res://themes/game_ui/ButtonDisabled.tres" id="ButtonDisabled"]
+[ext_resource type="StyleBox" uid="uid://p7b2yd7m87oi" path="res://themes/game_ui/ButtonHover.tres" id="ButtonHover"]
+[ext_resource type="StyleBox" uid="uid://d0gf5nxib7ygl" path="res://themes/game_ui/ButtonPressed.tres" id="ButtonPressed"]
+[ext_resource type="StyleBox" uid="uid://d0pcgrcjmfspw" path="res://themes/game_ui/Focus.tres" id="Focus"]
+[ext_resource type="FontFile" uid="uid://dytwhorsp2bp1" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
+[ext_resource type="StyleBox" uid="uid://nj7ow6punfcm" path="res://themes/game_ui/Panel.tres" id="Panel"]
 
 [resource]
 default_font = ExtResource("body")
 default_font_size = 22
-Label/colors/font_color = Color(0.137, 0.247, 0.263, 1)
-RichTextLabel/colors/default_color = Color(0.137, 0.247, 0.263, 1)
-Button/fonts/font = ExtResource("heading")
-Button/font_sizes/font_size = 24
 Button/colors/font_color = Color(0.137, 0.247, 0.263, 1)
+Button/colors/font_disabled_color = Color(0.41, 0.47, 0.4, 0.85)
+Button/colors/font_focus_color = Color(0.137, 0.247, 0.263, 1)
 Button/colors/font_hover_color = Color(0.137, 0.247, 0.263, 1)
 Button/colors/font_pressed_color = Color(0.137, 0.247, 0.263, 1)
-Button/colors/font_focus_color = Color(0.137, 0.247, 0.263, 1)
-Button/colors/font_disabled_color = Color(0.41, 0.47, 0.40, 0.85)
-Button/styles/normal = ExtResource("Button")
-Button/styles/hover = ExtResource("ButtonHover")
-Button/styles/pressed = ExtResource("ButtonPressed")
+Button/font_sizes/font_size = 24
+Button/fonts/font = ExtResource("heading")
 Button/styles/disabled = ExtResource("ButtonDisabled")
 Button/styles/focus = ExtResource("Focus")
+Button/styles/hover = ExtResource("ButtonHover")
+Button/styles/normal = ExtResource("Button")
+Button/styles/pressed = ExtResource("ButtonPressed")
+Label/colors/font_color = Color(0.137, 0.247, 0.263, 1)
 Panel/styles/panel = ExtResource("Panel")
 ProgressBar/styles/background = ExtResource("BarBackground")
 ProgressBar/styles/fill = ExtResource("BarForest")
+RichTextLabel/colors/default_color = Color(0.137, 0.247, 0.263, 1)

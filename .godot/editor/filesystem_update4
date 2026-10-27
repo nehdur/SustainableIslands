@@ -1,2 +1,3 @@
+res://scenes/Certificate.tscn
+res://scripts/Certificate.gd
 res://scripts/IslandScreen.gd
-res://scenes/CreateAccount.tscn
