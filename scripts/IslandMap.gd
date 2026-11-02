@@ -63,8 +63,7 @@ func refresh() -> void:
 			badge.position = Vector2(button.size.x - 44.0, maxf(0.0, icon.position.y + 4.0))
 			badge_label.position = badge.position
 			badge_label.text = "L%d" % level
-			var state := "Build site" if level == 0 else ("Open" if IslandGame.active(key) else "Needs workers")
-			button.tooltip_text = "%s • Level %d • %s" % [IslandGame.FACILITIES[key].title, level, state]
+			button.tooltip_text = ""
 		else:
 			var forest: bool = key == "forest"
 			button.tooltip_text = "%s • Health %d / 100" % ["Mangrove Forest" if forest else "Coral Sanctuary", IslandGame.data.forest if forest else IslandGame.data.marine]

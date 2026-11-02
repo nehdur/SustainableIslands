@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dptn65rvrh822"
-path="res://.godot/imported/island_map.svg-d411d8b077e70aba55cc4ec1cb435c41.ctex"
+uid="uid://bcf4ntqavdudv"
+path="res://.godot/imported/IconSI.png-2941270df3070b40af0cd2dd2a0b8997.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/island/island_map.svg"
-dest_files=["res://.godot/imported/island_map.svg-d411d8b077e70aba55cc4ec1cb435c41.ctex"]
+source_file="res://assets/UI/IconSI.png"
+dest_files=["res://.godot/imported/IconSI.png-2941270df3070b40af0cd2dd2a0b8997.ctex"]
 
 [params]
 
@@ -38,6 +38,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

@@ -2,15 +2,16 @@
 
 [ext_resource type="Texture2D" uid="uid://bfov3iwqchqe" path="res://assets/game_ui/menu_background.png" id="background"]
 [ext_resource type="StyleBox" path="res://themes/game_ui/BarEnergy.tres" id="BarEnergy"]
-[ext_resource type="StyleBox" path="res://themes/game_ui/BarForest.tres" id="BarForest"]
+[ext_resource type="StyleBox" uid="uid://bpw22pauucf2l" path="res://themes/game_ui/BarForest.tres" id="BarForest"]
 [ext_resource type="StyleBox" path="res://themes/game_ui/BarMarine.tres" id="BarMarine"]
 [ext_resource type="StyleBox" path="res://themes/game_ui/BarWaste.tres" id="BarWaste"]
 [ext_resource type="StyleBox" path="res://themes/game_ui/BarWater.tres" id="BarWater"]
+[ext_resource type="PackedScene" uid="uid://cpfo5bsy6x384" path="res://scenes/Certificate.tscn" id="certificate"]
 [ext_resource type="StyleBox" path="res://themes/game_ui/CompactPanel.tres" id="CompactPanel"]
 [ext_resource type="Texture2D" path="res://assets/game_ui/textures/counter.tres" id="counter"]
 [ext_resource type="PackedScene" path="res://scenes/GameDialog.tscn" id="dialog"]
 [ext_resource type="Texture2D" uid="uid://ffckb8314d5j" path="res://assets/game_ui/skins/panel.png" id="frame"]
-[ext_resource type="Texture2D" path="res://assets/game_ui/textures/guesthouse.tres" id="guesthouse"]
+[ext_resource type="Texture2D" uid="uid://d4nkybjpm0i73" path="res://assets/game_ui/textures/guesthouse.tres" id="guesthouse"]
 [ext_resource type="FontFile" uid="uid://dytwhorsp2bp1" path="res://assets/game_ui/fonts/BreeSerif-Regular.ttf" id="heading"]
 [ext_resource type="PackedScene" uid="uid://2uf10gonlsi3" path="res://scenes/IslandMap.tscn" id="map"]
 [ext_resource type="StyleBox" path="res://themes/game_ui/Primary.tres" id="Primary"]
@@ -18,9 +19,7 @@
 [ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryHover.tres" id="PrimaryHover"]
 [ext_resource type="StyleBox" path="res://themes/game_ui/PrimaryPressed.tres" id="PrimaryPressed"]
 [ext_resource type="Script" uid="uid://b2yoalvkmxwb8" path="res://scripts/IslandScreen.gd" id="script"]
-[ext_resource type="Theme" path="res://themes/game_ui/GameplayTheme.tres" id="theme"]
-
-[ext_resource type="PackedScene" path="res://scenes/Certificate.tscn" id="certificate"]
+[ext_resource type="Theme" uid="uid://dk12q5325jf2y" path="res://themes/game_ui/GameplayTheme.tres" id="theme"]
 
 [sub_resource type="ButtonGroup" id="Tabs"]
 
@@ -862,9 +861,8 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
-[node name="Certificate" parent="." instance=ExtResource("certificate")]
+[node name="Certificate" parent="." unique_id=2102561552 instance=ExtResource("certificate")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 1
 
 [connection signal="pressed" from="GuideButton" to="." method="show_help"]

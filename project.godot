@@ -17,12 +17,10 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 config/name="SustainableIsland"
 run/main_scene="res://scenes/LoginScreen.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://assets/island/leaf.svg"
+config/icon="uid://bcf4ntqavdudv"
 
 [autoload]
 
-GameData="*res://autoloads/GameData.gd"
-GameState="*res://autoloads/GameState.gd"
 Supabase="*res://autoloads/Supabase.gd"
 IslandGame="*res://autoloads/IslandGame.gd"
 IslandAudio="*res://scenes/IslandAudio.tscn"
