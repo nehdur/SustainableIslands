@@ -1,6 +1,2 @@
-res://scenes/Game.tscn
-res://scenes/IslandMap.tscn
-res://scripts/IslandMap.gd
 res://scenes/LoginScreen.tscn
-res://scripts/ForgotPassword.gd
-res://scenes/ForgotPassword.tscn
+res://scripts/IslandMap.gd

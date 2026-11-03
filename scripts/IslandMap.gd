@@ -65,9 +65,9 @@ func refresh() -> void:
 			badge_label.text = "L%d" % level
 			button.tooltip_text = ""
 		else:
-			var forest: bool = key == "forest"
-			button.tooltip_text = "%s • Health %d / 100" % ["Mangrove Forest" if forest else "Coral Sanctuary", IslandGame.data.forest if forest else IslandGame.data.marine]
-
+			button.tooltip_text = ""	
+			
+		
 func _process(delta: float) -> void:
 	clock += delta
 	boat.position = Vector2(size.x * 0.06 + sin(clock * 0.15) * 20, size.y * 0.78 + sin(clock * 1.4) * 4)
